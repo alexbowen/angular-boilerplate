@@ -11,7 +11,7 @@ A bare bones angular JS SPA that uses the following Javascript Dependencies:
 Frontend Application Structure
 ------------------------------
 
-Files (js/css/assets) are served from either production or application (development) folders. There is a tests folder for javascript unit tests. A folder for documentation is created in the build process (detailed below).
+Files (js/css/assets) are served from either production or development folders. There is a tests folder for javascript unit tests. A folder for documentation is created in the build process (detailed below).
 
 Install bower js dependencies (if not there already) in /development/js/lib
 
@@ -36,7 +36,7 @@ To install the local node modules and dependencies needed for the build: ```sudo
 The build system uses grunt.js. This enables us to define the build in one config file (Gruntfile.js). For this application we run the follwing processes:
 
 1. Build javascript documentation using yuidoc
-2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -.
+2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -
 
 ```http://localhost:8000/test/e2e/runner.html ```
 
