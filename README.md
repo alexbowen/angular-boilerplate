@@ -1,9 +1,7 @@
 Angular Application
 ===================
 
-Transform Admin is the HTML and Javascript front end for the Transform Surveys App.
-
-Admin uses the following Javascript Dependencies:
+A bare bones angular JS SPA that uses the following Javascript Dependencies:
 
 - Angular
 - JQuery
@@ -38,7 +36,10 @@ To install the local node modules and dependencies needed for the build: ```sudo
 The build system uses grunt.js. This enables us to define the build in one config file (Gruntfile.js). For this application we run the follwing processes:
 
 1. Build javascript documentation using yuidoc
-2. Run karma e2e and unit tests (this can also be ran from the browser window if needed - http://localhost:8000/test/e2e/runner.html). phantomjs is also available so we can run headless browser tests.
+2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -.
+
+```http://localhost:8000/test/e2e/runner.html```
+
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
 4. Run requirejs optimizer against all application javascript
