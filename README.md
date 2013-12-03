@@ -42,11 +42,12 @@ The build system uses grunt.js. This enables us to define the build in one confi
 
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
-4. Run requirejs optimizer against all application javascript
+5. Run requirejs optimizer against all application javascript
+6. copy static assets from development to production
 
 so we can run 3 commands from the terminal:
 
-- ```grunt ``` build all (default) - steps 1-5 above
+- ```grunt ``` build all (default) - steps 1-6 above
 - ```grunt test ``` build test - steps 2 above
 - ```grunt css ``` build CSS - step 4 above
 - ```grunt js ``` build JS - step 5 above
