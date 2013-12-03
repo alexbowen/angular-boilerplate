@@ -1,4 +1,4 @@
-Angular Application
+Angular Boilerplate
 ===================
 
 A bare bones angular JS SPA that uses the following Javascript Dependencies:
@@ -11,7 +11,7 @@ A bare bones angular JS SPA that uses the following Javascript Dependencies:
 Frontend Application Structure
 ------------------------------
 
-Files (js/css/assets) are served from either production or application (development) folders. There is a tests folder for javascript unit tests. A folder for documentation is created in the build process (detailed below).
+Files (js/css/assets) are served from either production or development folders. There is a tests folder for javascript unit tests. A folder for documentation is created in the build process (detailed below).
 
 Install bower js dependencies (if not there already) in /development/js/lib
 
@@ -36,17 +36,18 @@ To install the local node modules and dependencies needed for the build: ```sudo
 The build system uses grunt.js. This enables us to define the build in one config file (Gruntfile.js). For this application we run the follwing processes:
 
 1. Build javascript documentation using yuidoc
-2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -.
+2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -
 
 ```http://localhost:8000/test/e2e/runner.html ```
 
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
 5. Run requirejs optimizer against all application javascript
+6. copy static assets from development to production
 
 so we can run 3 commands from the terminal:
 
-- ```grunt ``` build all (default) - steps 1-5 above
+- ```grunt ``` build all (default) - steps 1-6 above
 - ```grunt test ``` build test - steps 2 above
 - ```grunt css ``` build CSS - step 4 above
 - ```grunt js ``` build JS - step 5 above
