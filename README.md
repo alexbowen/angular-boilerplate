@@ -1,4 +1,4 @@
-Angular Application
+Angular Boilerplate
 ===================
 
 A bare bones angular JS SPA that uses the following Javascript Dependencies:
