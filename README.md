@@ -38,7 +38,7 @@ The build system uses grunt.js. This enables us to define the build in one confi
 1. Build javascript documentation using yuidoc
 2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -.
 
-```http://localhost:8000/test/e2e/runner.html```
+```http://localhost:8000/test/e2e/runner.html ```
 
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
