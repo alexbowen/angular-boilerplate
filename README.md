@@ -42,7 +42,7 @@ The build system uses grunt.js. This enables us to define the build in one confi
 
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
-4. Run requirejs optimizer against all application javascript
+5. Run requirejs optimizer against all application javascript
 
 so we can run 3 commands from the terminal:
 
