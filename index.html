@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Angular boilerplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="development/css/site.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="ApplicationController">
+
+<ul class="dropdown-menu">
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Settings</a></li>
+    <li class="divider"></li>
+    <li><a href="index.html">Sign In</a></li>
+</ul>
+
+<!-- Navbar -->
+<ul id="frame-menu">
+    <li ng-class="{active: page == 'home'}"><a href="#/home">Home</a></li>
+    <li ng-class="{active: page == 'users'}"><a href="#/users">Users</a></li>
+</ul>
+
+<!-- Content -->
+<div id="page-holder">
+
+    <!-- Dynamic content -->
+    <ng-view></ng-view>
+
+</div>
+
+<!-- <div ng-controller="LoginController">
+    <div modal="showLogin" close="closeLogin()" ng-include="template.url"></div>
+</div> -->
+
+<div class="span4">
+    <div class="well">
+        <h3>Side Bar</h3>
+        <p>This is static content that will stay the same between pages.</p>
+    </div>
+</div>
+<script data-main="development/js/main.js" src="development/js/lib/require/require.js"></script>
+</body>
+</html>

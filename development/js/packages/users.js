@@ -1,0 +1,1 @@
+define(['app/controllers/page/users']);

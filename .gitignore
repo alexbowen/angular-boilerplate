@@ -1,0 +1,8 @@
+.DS_Store
+*.iml
+/production
+**_delete
+/node_modules
+/.idea
+/documentation
+/development/js/lib/bower_companies
