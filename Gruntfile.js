@@ -104,10 +104,8 @@ module.exports = function(grunt) {
         },
         modernizr: {
 
-            // [REQUIRED] Path to the build you're using for development.
-            "devFile" : "./development/js/lib/modernizr/modernizr-dev.js",
+            "devFile" : "./development/js/lib/modernizr/modernizr.js",
 
-            // [REQUIRED] Path to save out the built file.
             "outputFile" : "./production/js/lib/modernizr/modernizr-custom.js",
 
             // Based on default settings on http://modernizr.com/download/
@@ -131,25 +129,20 @@ module.exports = function(grunt) {
                 "domprefixes" : false
             },
 
-            // By default, source is uglified before saving
             "uglify" : true,
 
-            // Define any tests you want to implicitly include.
             "tests" : [],
 
-            // By default, this task will crawl your project for references to Modernizr tests.
-            // Set to false to disable.
             "parseFiles" : true,
 
-            // When parseFiles = true, this task will crawl all *.js, *.css, *.scss files, except files that are in node_modules/.
+            // When parseFiles = true, this task will crawl all *.js, *.css,
+            // *.scss files, except files that are in node_modules/.
             // You can override this by defining a "files" array below.
             // "files" : [],
 
-            // When parseFiles = true, matchCommunityTests = true will attempt to
-            // match user-contributed tests.
             "matchCommunityTests" : false,
 
-            // Have custom Modernizr tests? Add paths to their location here.
+            // custom Modernizr tests
             "customTests" : []
         }
     });
