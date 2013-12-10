@@ -3,7 +3,7 @@
 (function() {
 'use strict';
 
-	describe('Application', function() {
+	describe('Transform admin', function() {
 		beforeEach(function() {
 			browser().navigateTo('/');
 			sleep(1);

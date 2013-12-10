@@ -18,6 +18,22 @@ module.exports = function(grunt) {
                 }
             }
         },
+//        mocha: {
+//            all: {
+//                src: ['TestRunner.html'],
+//                options: {
+//                    mocha: {
+//                        ignoreLeaks: true
+//                    },
+//                    reporter: function(runner) {
+//                        new mocha.reporters.Spec(runner);
+//                        new mocha.reporters.Teamcity(runner);
+//                    },
+//                    ui : 'bdd',
+//                    run: false
+//                }
+//            }
+//        },
         jshint: {
             options : {
                 'smarttabs'   : true,
@@ -43,11 +59,11 @@ module.exports = function(grunt) {
                     preserveLicenseComments: false,
                     paths: {
                         app             : 'application',
-                        jquery			: 'lib/jquery/jquery',
-                        angular         : 'lib/bower_components/angular/angular',
-                        angularRoute    : 'lib/bower_components/angular-route/angular-route',
-                        angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
-                        text            : 'lib/bower_components/requirejs-text/text'
+                        jquery 			: 'lib/jquery/jquery',
+                        angular			: 'lib/angular/angular',
+                        angularRoute 	: 'lib/angular/angular-route',
+                        angularMocks    : 'lib/angular-mocks/angular-mocks',
+                        text            : 'lib/requirejs-text/text'
 
                     },
                     modules: [
@@ -72,8 +88,8 @@ module.exports = function(grunt) {
         copy : {
             main : {
                 files : [
-                    {src : './development/images', dest : './production'},
-                    {src : './development/fonts', dest : './production'}
+                    {src : './development/images/**', dest : './production'},
+                    {src : './development/fonts/**', dest : './production'}
                 ]
             }
         },
@@ -153,19 +169,19 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-karma');
 
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-
     grunt.loadNpmTasks("grunt-modernizr");
+
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
-    grunt.registerTask('default', ['yuidoc', 'jshint', 'modernizr', 'karma:e2e', 'karma:unit', 'requirejs:css', 'requirejs:js', 'copy:main']);
+    grunt.registerTask('default', ['yuidoc', 'karma:e2e', 'karma:unit', 'requirejs:css', 'requirejs:js', 'copy:main']);
 
-    grunt.registerTask('test', ['karma:e2e', 'karma:unit']);
+    grunt.registerTask('test', ['jshint', 'karma:e2e', 'karma:unit']);
+
+    grunt.registerTask('unit', ['karma:unit']);
 
     grunt.registerTask('css', ['requirejs:css']);
 
     grunt.registerTask('js', ['requirejs:js']);
-
-    grunt.registerTask('watch', ['karma:watch']);
 };

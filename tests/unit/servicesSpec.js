@@ -13,5 +13,11 @@ define([
 				expect(version).toEqual('0.1');
 			}));
 		});
+
+        describe('auth', function() {
+            it('should return current version', mocks.inject(function(version) {
+
+            }));
+        });
 	});
 });

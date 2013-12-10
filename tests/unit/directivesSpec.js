@@ -20,5 +20,18 @@ define([
 				});
 			});
 		});
+
+        describe('login', function() {
+            it('should print current version', function() {
+                mocks.module(function($provide) {
+
+                });
+                mocks.inject(function($compile, $rootScope) {
+                    if (!$rootScope.authenticated)  {
+
+                    }
+                });
+            });
+        });
 	});
 });

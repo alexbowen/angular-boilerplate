@@ -1,4 +1,5 @@
 define('unit', [
+    //'/base/tests/unit/authSpec',
     '/base/tests/unit/filtersSpec',
     '/base/tests/unit/controllersSpec',
     '/base/tests/unit/directivesSpec',

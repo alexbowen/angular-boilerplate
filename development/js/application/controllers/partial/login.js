@@ -1,43 +1,32 @@
-define(['angular'],
-function (angular) {
-    return ['$scope', '$rootScope', '$routeParams', function($scope) {
-        //$scope.template = {'name' : 'login', 'url' : 'development/js/application/view/partial/login.tpl'}
+define(['angular', 'utils/cookie'],
+function (angular, cookie) {
+    return ['$scope', '$rootScope', '$http', '$compile', 'AuthServiceProvider', function($scope, $rootScope, $http, $compile, AuthServiceProvider) {
 
-        $scope.user = {};
-        // handle listen to login required event
-        $scope.$on('event:auth-loginRequired', function() {
-            $scope.showLogin = true;
-            console.log('auth-loginRequired');
-        });
-        // handle listen to login confirmed event
-        $scope.$on('event:auth-loginConfirmed', function() {
-            $scope.user = {};
-            $scope.showLogin = false;
-            $scope.loginError = false;
-            $rootScope.loggedIn = true;
-            console.log('auth-loginConfirmed');
-        });
+    	$scope.authenticate = function () {
+	        AuthServiceProvider
+	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
+	        	.success(function(response, httpCode) {
+                    if (response.authToken) {
 
-        // login to server
-        $scope.login = function(user) {
-            user._csrf = $window.csrf;
-            $http.post('/api/sessions', user)
-                .success(function(data) {
-                    // show alert login success
-                    $scope.addAlert({type: 'success', msg: 'Login Successful!'});
-                    authService.loginConfirmed();
+                        cookie.remove('TA-authToken');
+
+                        if ($scope.user.remember) {
+                            cookie.set('TA-authToken', response.authToken, {
+                                'maxAge' : 60
+                            });
+                        }
+
+                        $rootScope.$broadcast('event:auth-loginConfirmed', response);
+                    }
+
+                    if (httpCode === '401') {
+                        $rootScope.$broadcast('event:auth-loginRefused', response);
+                    }
                 })
-                .error(function(err) {
-                    // show error
-                    $scope.loginError = true;
-                    //$scope.addAlert({type: 'error', msg: 'Access Denied!'})
+                .error(function () {
+                    $rootScope.$broadcast('event:auth-loginError');
                 });
-        };
-        $scope.closeLogin = function() {
-            $scope.user = {};
-            $location.path('/');
-            $scope.showLogin = false;
-        };
+	    }
 
         $scope.$apply();
     }];

@@ -6,7 +6,7 @@ function (angular) {
 
 		// More involved example where controller is required from an external file
 		.controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
-			require(['app/controllers/main'], function(main) {
+			require(['app/controllers/application'], function(main) {
 
 				// injector method takes an array of modules as the first argument
 				// if you want your controller to be able to use components from
@@ -20,10 +20,9 @@ function (angular) {
 				$injector.invoke(route, this, {'$scope': $scope});
 			});
 		}])
-        .controller('LoginController', ['$scope', '$injector', '$location', '$http', 'authService', '$rootScope', '$window',
-            function($scope, $injector, $location, $http, authService, $rootScope, $window) {
-            require(['app/controllers/partial/login'], function(route) {
-                $injector.invoke(route, this, {'$scope': $scope});
+        .controller('LoginController', ['$scope', '$injector', '$location', '$http', '$rootScope', '$window', function($scope, $injector) {
+            require(['app/controllers/partial/login'], function(login) {
+                $injector.invoke(login, this, {'$scope': $scope});
             });
         }]
 	);

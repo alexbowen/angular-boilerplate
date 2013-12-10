@@ -1,10 +1,10 @@
-define(['angular'], function (angular) {
+define(['angular', 'app/services/auth'],
+function (angular) {
 	'use strict';
 	
-  /* Services */
+    /* Services */
 
-  // Demonstrate how to register services
-  // In this case it is a simple value service.
-	angular.module('services', [])
-		.value('version', '0.1');
+    return angular.module('services', ['AuthService'])
+        .value('version', '0.1')
+
 });

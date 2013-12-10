@@ -3,7 +3,9 @@ function (angular) {
 	return ['$scope', '$rootScope', '$routeParams', function($scope, $rootScope, $routeParams) {
 
 		// Getting the page from $routeParams
-		var page = $routeParams.page;
+		var page = $routeParams.page || 'home';
+
+		console.log('$routeParams.page',$routeParams.page);
 
 		$scope.$emit('routeLoaded', {page: page});
 		$scope.page = $rootScope.pages[page];

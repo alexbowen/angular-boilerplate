@@ -28,8 +28,7 @@ require([
 ], function () {
     require( [
         'angular',
-        'app/application',
-        'app/controllers/main',
+        'app/bootstrap',
         'packages/main'
     ], function(angular, app, routes) {
         'use strict';
