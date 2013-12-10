@@ -168,7 +168,7 @@ label a, .btn, input, label {
     background-color:#343434
 }
 
-form {
+.login-form {
     margin: 0 auto;
     padding: 0;
     position: relative;
@@ -251,7 +251,7 @@ a.header:hover img, a.header:hover span {
 }
 
 /* Animations */
-form,
+.login-form,
 input[type=text],
 input[type=password],
 a.header img,
