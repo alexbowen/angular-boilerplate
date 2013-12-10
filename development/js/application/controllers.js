@@ -24,6 +24,11 @@ function (angular) {
             require(['app/controllers/partial/login'], function(login) {
                 $injector.invoke(login, this, {'$scope': $scope});
             });
+        }])
+        .controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
+            require(['app/controllers/partial/menu'], function(login) {
+                $injector.invoke(login, this, {'$scope': $scope});
+            });
         }]
 	);
 });

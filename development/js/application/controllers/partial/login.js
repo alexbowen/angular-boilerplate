@@ -12,7 +12,7 @@ function (angular, cookie) {
 
                         if ($scope.user.remember) {
                             cookie.set('TA-authToken', response.authToken, {
-                                'maxAge' : 60
+                                'maxAge' : 6000
                             });
                         }
 
