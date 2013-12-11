@@ -1,4 +1,3 @@
-<div>
 <form name="enter" ng-show="enter" ng-submit="authenticate()">
     <a href="#" class="header">Sign in</a>
     <fieldset>
@@ -9,7 +8,7 @@
         <input type="password" name="password" autocomplete="off" id="id_password" tabindex="2" ng-model="user.pass" required>
 
         <label class="checkbox"><input type="checkbox" tabindex="3" ng-model="user.remember" />Remember me</label>
-        <input type="submit"  ng-click="authenticate()" class="btn btn-primary btn-block" tabindex="4" value="sign in" ng-disabled="!enter.$valid">
+        <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="sign in" ng-disabled="!enter.$valid">
     </fieldset>
 </form>
 
@@ -20,8 +19,7 @@
         <input type="text" name="username" id="id_username" tabindex="1" ng-model="user.name" autocomplete="off" required>
 
         <label class="checkbox"><input type="checkbox" tabindex="3" ng-model="user.remember" />Remember me</label>
-        <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="sign in" ng-disabled="!login.$valid">
+        <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="submit" ng-disabled="!forgot.$valid">
     </fieldset>
 </form>
-</div>
 

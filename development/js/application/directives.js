@@ -13,9 +13,9 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
 			restrict: 'E',
             replace: true,
             controller: 'LoginController',
-			templateUrl: 'development/js/application/view/partial/login.tpl',
+			//templateUrl: 'development/js/application/view/partial/login.tpl',
 			link: function(scope, element, attrs) {
-                scope.type = 'enter';
+
 			}
 		};
 	});

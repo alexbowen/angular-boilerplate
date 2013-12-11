@@ -2,6 +2,9 @@ define(['angular', 'utils/cookie'],
 function (angular, cookie) {
     return ['$scope', '$rootScope', '$http', '$compile', 'AuthServiceProvider', function($scope, $rootScope, $http, $compile, AuthServiceProvider) {
 
+        $scope.enter = true;
+        $scope.forgot = false;
+
     	$scope.authenticate = function () {
 	        AuthServiceProvider
 	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
@@ -26,7 +29,16 @@ function (angular, cookie) {
                 .error(function () {
                     $rootScope.$broadcast('event:auth-loginError');
                 });
-	    }
+	    };
+
+        $scope.forgotPassword = function () {
+            //$scope.switchState();
+        };
+
+        $scope.changeState = function () {
+            $scope.enter = $scope.enter ? false : true;
+            $scope.forgot = $scope.forgot ? false : true;
+        };
 
         $scope.$apply();
     }];
