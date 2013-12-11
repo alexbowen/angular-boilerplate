@@ -1,25 +1,29 @@
-<form name="enter" ng-show="enter" ng-submit="authenticate()">
-    <a href="#" class="header">Sign in</a>
-    <fieldset>
-        <label for="id_username">Username</label>
-        <input type="text" name="username" id="id_username" tabindex="1" ng-model="user.name" autocomplete="off" required>
+<section class="login" ng-show="showLogin">
+    <form class="login-form" ng-show="senter" name="enter" ng-submit="authenticate()">
+        <a href="#" class="header">Sign in</a>
+        <fieldset>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" tabindex="1" ng-model="user.name" autocomplete="off" required>
 
-        <label for="id_password">Password<a href="#" title="Forgot?" class="pull-right" tabindex="5">Forgot?</a></label>
-        <input type="password" name="password" autocomplete="off" id="id_password" tabindex="2" ng-model="user.pass" required>
+            <label for="password">Password<a href="#" title="Forgot?" class="pull-right" ng-click="changeState()" tabindex="5">Forgot?</a></label>
+            <input type="password" name="password" autocomplete="off" id="password" tabindex="2" ng-model="user.pass" required>
 
-        <label class="checkbox"><input type="checkbox" tabindex="3" ng-model="user.remember" />Remember me</label>
-        <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="sign in" ng-disabled="!enter.$valid">
-    </fieldset>
-</form>
+            <label class="checkbox"><input type="checkbox" tabindex="3" ng-model="user.remember" />Remember me</label>
+            <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="sign in" ng-disabled="!enter.$valid">
+        </fieldset>
+    </form>
 
-<form ng-show="forgot" name="forgot" ng-submit="forgot()">
-    <a href="#" class="header">Forgot password</a>
-    <fieldset>
-        <label for="id_username">Email</label>
-        <input type="text" name="username" id="id_username" tabindex="1" ng-model="user.name" autocomplete="off" required>
+    <form class="login-form" ng-show="sforgot" name="forgot" ng-submit="resetRequest()">
+        <a href="#" class="header">Forgot password</a>
+        <fieldset>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" tabindex="1" ng-model="user.name" autocomplete="off" required>
 
-        <label class="checkbox"><input type="checkbox" tabindex="3" ng-model="user.remember" />Remember me</label>
-        <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="submit" ng-disabled="!forgot.$valid">
-    </fieldset>
-</form>
+            <label for="cancel"><a href="#" id="cancel" class="pull-right" ng-click="changeState()" tabindex="5">Cancel</a></label>
+            <input type="submit" class="btn btn-primary btn-block" tabindex="4" value="submit" ng-disabled="!forgot.$valid">
+        </fieldset>
+    </form>
+
+    <span class="error">{{error}}</span>
+</section>
 
