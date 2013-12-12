@@ -25,7 +25,7 @@ define([
 
             $httpBackend.whenPOST('/login/authenticate', function (data) {
                 var body = angular.fromJson(data);
-                return body.pass === "right"? true : false;
+                return body.pass === "Password1"? true : false;
             }).respond({
                 "StatusCode":200,
                 "StatusMessage":"you are logged in",
@@ -34,7 +34,7 @@ define([
 
             $httpBackend.whenPOST('/login/authenticate', function (data) {
                 var body = angular.fromJson(data);
-                return body.pass === "wrong"? true : false;
+                return body.pass === "password"? true : false;
             }).respond({
                 "StatusCode":403,
                 "StatusMessage":"authorisation failed"
@@ -53,11 +53,11 @@ define([
 
 
         it('authentication success', function() {
-            $httpBackend.expectPOST('/login/authenticate', {"user":"alex","pass":"right"});
+            $httpBackend.expectPOST('/login/authenticate', {"user":"alex","pass":"Password1"});
 
             scope.user = {};
             scope.user.name = 'alex';
-            scope.user.pass = 'right'
+            scope.user.pass = 'Password1'
             scope.authenticate();
             $httpBackend.flush();
 
@@ -66,13 +66,13 @@ define([
         });
 
         it('authentication fail', function() {
-            $httpBackend.expectPOST('/login/authenticate', {"user":"alex","pass":"wrong"});
+            //$httpBackend.expectPOST('/login/authenticate', {"user":"alex","pass":"password"});
 
             scope.user = {};
             scope.user.name = 'alex';
-            scope.user.pass = 'wrong'
+            scope.user.pass = 'password'
             scope.authenticate();
-            $httpBackend.flush();
+            //$httpBackend.flush();
 
             expect(scope.showLogin).toEqual(true);
             expect(scope.error).toBeDefined();
@@ -88,6 +88,20 @@ define([
             scope.changeState();
             expect(scope.showEnter).toEqual(false);
             expect(scope.showForgot).toEqual(true);
+        });
+
+        it('test invalid passwords', function() {
+            expect(scope.validatePassword('password')).toEqual(false);
+            expect(scope.validatePassword('pass')).toEqual(false);
+            expect(scope.validatePassword('P5ss')).toEqual(false);
+            expect(scope.validatePassword('Password')).toEqual(false);
+            expect(scope.validatePassword('password1')).toEqual(false);
+            expect(scope.validatePassword('Password1asswordpasswordpasswordPasss')).toEqual(false);
+        });
+
+        it('test valid passwords', function() {
+            expect(scope.validatePassword('Password1')).toEqual(true);
+            expect(scope.validatePassword('pAssw0rd')).toEqual(true);
         });
     });
 });

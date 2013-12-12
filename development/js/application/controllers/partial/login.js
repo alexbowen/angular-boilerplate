@@ -6,36 +6,55 @@ function (angular, cookie) {
         $scope.showForgot = false;
 
     	$scope.authenticate = function () {
-	        AuthServiceProvider
-	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
-	        	.success(function(response) {
-                    console.log('response', response);
-                    if (response.authToken && response.StatusCode === 200) {
 
-                        cookie.remove('TA-authToken');
+           if ($scope.validatePassword($scope.user.pass)) {
 
-                        if ($scope.user.remember) {
-                            cookie.set('TA-authToken', response.authToken, {
-                                'maxAge' : 6000
-                            });
+    	        AuthServiceProvider
+    	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
+    	        	.success(function(response) {
+                        console.log('response', response);
+                        if (response.authToken && response.StatusCode === 200) {
+
+                            cookie.remove('TA-authToken');
+
+                            if ($scope.user.remember) {
+                                cookie.set('TA-authToken', response.authToken, {
+                                    'maxAge' : 6000
+                                });
+                            }
+
+                            $rootScope.$broadcast('event:auth-loginConfirmed', response);
+
+                            $scope.showLogin = false;
+                        } else {
+                            $scope.showLogin = true;
+                            $scope.error = response.StatusMessage;
                         }
 
-                        $rootScope.$broadcast('event:auth-loginConfirmed', response);
+                        if (response.StatusCode === 403) {
+                            $rootScope.$broadcast('event:auth-loginRefused', response);
+                        }
+                    })
+                    .error(function () {
+                        $scope.error = 'Request error';
+                    });
+    	    } else {
+                $scope.error = 'Invalid password';
+            }
+        };
 
-                        $scope.showLogin = false;
-                    } else {
-                        $scope.showLogin = true;
-                        $scope.error = response.StatusMessage;
-                    }
+        $scope.validatePassword = function (password) {
 
-                    if (response.StatusCode === 403) {
-                        $rootScope.$broadcast('event:auth-loginRefused', response);
-                    }
-                })
-                .error(function () {
-                    $scope.error = 'Request error';
-                });
-	    };
+            var pattern = /^(?=.*\d)(?=.*[A-Z]).{8,32}$/;
+
+            if (pattern.test(password)) {
+                if (password.length >= 8 && password.length <= 32) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         $scope.resetRequest = function () {
             AuthServiceProvider
