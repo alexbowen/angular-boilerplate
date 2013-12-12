@@ -3,7 +3,7 @@
 define([
     'angular',
     'angularMocks',
-    'app/application'
+    'app/bootstrap'
 ], function(angular, mocks) {
     'use strict';
 
@@ -11,7 +11,7 @@ define([
         var scope;//we'll use this scope in our tests
 
         //mock Application to allow us to inject our own dependencies
-        beforeEach(angular.mock.module('ApplicationController'));
+        beforeEach(angular.mock.module('controllers'));
         //mock the controller for the same reason and include $rootScope and $controller
         beforeEach(angular.mock.inject(function($rootScope, $controller) {
             //create an empty scope
@@ -21,7 +21,8 @@ define([
         }));
         // tests start here
 
-        it('should have variable text = "Hello World!"', function(){
+        it('should have variable text = "Hello World!"', function () {
+            console.log('scope.text', scope.text);
             expect(scope.text).toBe('Hello World!');
         });
     });

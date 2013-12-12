@@ -3,7 +3,7 @@
 define([
     'angular',
     'angularMocks',
-    'app/application'
+    'app/bootstrap'
 ], function(angular, mocks, app) {
 	'use strict';
 
@@ -14,7 +14,7 @@ define([
 			mocks.module('controllers');
 			mocks.inject(function($rootScope, $controller) {
 				scope = $rootScope.$new();
-				application = $controller('application', {
+				application = $controller('bootstrap', {
 					$scope: scope
 				});
 			});

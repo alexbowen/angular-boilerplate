@@ -4,6 +4,8 @@ function (angular, cookie) {
 
         cookie.remove('TA-authToken');  //TEMP
 
+        $rootScope.text = 'Hello World!';
+
         $rootScope.$on('event:auth-loginConfirmed', function () {
             $rootScope.authenticated = true;
         });
@@ -11,5 +13,7 @@ function (angular, cookie) {
         $rootScope.$on('event:auth-loginRefused', function (event, data) {
             $rootScope.authenticated = false;
         });
+
+        $scope.$apply();
 	}];
 });

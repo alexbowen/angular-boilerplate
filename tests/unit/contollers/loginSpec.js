@@ -2,28 +2,43 @@
 define([
     'angular',
     'angularMocks',
-    'app/application'
+    'app/bootstrap'
 ], function(angular, mocks, app) {
 
-    describe('authService', function() {
+    describe('LoginController', function() {
         var $httpBackend, $rootScope, createController;
 
         beforeEach(function() {
-            mocks.module('' +
-                '');
+            mocks.module('controllers');
             mocks.inject(function($rootScope, $controller) {
                 var scope = $rootScope.$new();
-//                var application = $controller('transformAdmin', {
-//                    $scope: scope
-//                });
+                application = $controller('ApplicationController', {
+                    $scope: scope
+                });
             });
         });
 
         beforeEach(inject(function($injector) {
 
-            mocks.module('authService');
+            //mocks.module('controllers');
             // Set up the mock http service responses
             $httpBackend = $injector.get('$httpBackend');
+
+            $httpBackend.whenPOST('/login/authenticate?pass=right&user=alex').respond({
+                "StatusCode":200,
+                "StatusMessage":"you are logged in",
+                'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
+            });
+
+            $httpBackend.whenPOST('/login/authenticate?pass=wrong&user=alex').respond({
+                "StatusCode":403,
+                "StatusMessage":"authorisation failed"
+            });
+
+            $httpBackend.whenGET('/login/authenticate?pass=right&user=alex').respond({
+                "StatusCode":401,
+                "StatusMessage":"bad request (GET)"
+            });
 
             // Get hold of a scope (i.e. the root scope)
             //$rootScope = $injector.get('$rootScope');
@@ -31,7 +46,7 @@ define([
             var $controller = $injector.get('$controller');
 
             createController = function() {
-                return $controller('authService', {'$scope' : $rootScope });
+                return $controller('LoginController', {'$scope' : $rootScope });
             };
         }));
 
@@ -39,13 +54,17 @@ define([
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });
-//
-//
-//        it('should fetch authentication token', function() {
-//            $httpBackend.expectGET('/login/authenticate');
-//            var controller = createController();
-//            $httpBackend.flush();
-//        });
+
+
+       it('should fetch authentication token', function() {
+           $httpBackend.expectPOST('/login/authenticate', {'user' : 'alex', 'pass' : 'right'}).respond(200, {
+                "StatusCode":200,
+                "StatusMessage":"you are logged in",
+                'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
+            });
+           var controller = createController();
+           $httpBackend.flush();
+       });
 //
 //
 //        it('should send msg to server', function() {
