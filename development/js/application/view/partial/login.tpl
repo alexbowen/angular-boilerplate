@@ -1,5 +1,5 @@
 <section class="login" ng-show="showLogin">
-    <form class="login-form" ng-show="senter" name="enter" ng-submit="authenticate()">
+    <form class="login-form" ng-show="showEnter" name="enter" ng-submit="authenticate()">
         <a href="#" class="header">Sign in</a>
         <fieldset>
             <label for="username">Username</label>
@@ -13,7 +13,7 @@
         </fieldset>
     </form>
 
-    <form class="login-form" ng-show="sforgot" name="forgot" ng-submit="resetRequest()">
+    <form class="login-form" ng-show="showForgot" name="forgot" ng-submit="resetRequest()">
         <a href="#" class="header">Forgot password</a>
         <fieldset>
             <label for="username">Username</label>

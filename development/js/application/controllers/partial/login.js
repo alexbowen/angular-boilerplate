@@ -1,9 +1,9 @@
 define(['angular', 'utils/cookie'],
 function (angular, cookie) {
-    return ['$scope', '$rootScope', '$http', '$compile', 'AuthServiceProvider', function($scope, $rootScope, $http, $compile, AuthServiceProvider) {
+    return ['$scope', 'AuthServiceProvider', '$rootScope', function($scope, AuthServiceProvider, $rootScope) {
 
-        $scope.senter = true;
-        $scope.sforgot = false;
+        $scope.showEnter = true;
+        $scope.showForgot = false;
 
     	$scope.authenticate = function () {
 	        AuthServiceProvider
@@ -23,13 +23,14 @@ function (angular, cookie) {
                         $rootScope.$broadcast('event:auth-loginConfirmed', response);
 
                         $scope.showLogin = false;
+                    } else {
+                        $scope.showLogin = true;
+                        $scope.error = response.StatusMessage;
                     }
 
                     if (response.StatusCode === 403) {
                         $rootScope.$broadcast('event:auth-loginRefused', response);
                     }
-
-                    $scope.error = response.StatusMessage;
                 })
                 .error(function () {
                     $scope.error = 'Request error';
@@ -51,7 +52,7 @@ function (angular, cookie) {
                 });
         };
 
-        $scope.resetRequest = function () {
+        $scope.resetAction = function () {
             AuthServiceProvider
                 .resetAction({'user' : $scope.user.name})
                 .success(function(response, httpCode) {
@@ -79,8 +80,8 @@ function (angular, cookie) {
         };
 
         $scope.changeState = function () {
-            $scope.senter = $scope.senter ? false : true;
-            $scope.sforgot = $scope.sforgot ? false : true;
+            $scope.showEnter = $scope.showEnter ? false : true;
+            $scope.showForgot = $scope.showForgot ? false : true;
         };
 
         if (!$rootScope.authenticated && !cookie.get('TA-authToken')) {

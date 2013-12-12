@@ -11,25 +11,13 @@ define(['angular'], function (angular) {
 
                 return {
                     authenticate : function (credentials) {
-                        return $http({
-                            'url'     : '/login/authenticate',
-                            'method'  : 'POST',
-                            'params'  : credentials
-                        });
+                        return $http.post('/login/authenticate', JSON.stringify(credentials));
                     },
                     resetRequest : function (credentials) {
-                        return $http({
-                            'url'     : '/login/requestpasswordreset',
-                            'method'  : 'POST',
-                            'params'  : credentials
-                        });
+                        return $http.post('/login/requestpasswordreset', JSON.stringify(credentials));
                     },
                     resetAction : function (credentials) {
-                        return $http({
-                            'url'     : '/login/actionpasswordreset',
-                            'method'  : 'POST',
-                            'params'  : credentials
-                        });
+                        return $http.post('/login/actionpasswordreset', JSON.stringify(credentials));
                     }
                 }
             }]

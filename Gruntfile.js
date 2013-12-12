@@ -181,6 +181,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('unit', ['karma:unit']);
 
+    grunt.registerTask('e2e', ['karma:e2e']);
+
     grunt.registerTask('css', ['requirejs:css']);
 
     grunt.registerTask('js', ['requirejs:js']);
