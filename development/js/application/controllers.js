@@ -28,6 +28,16 @@ function (angular) {
             require(['app/controllers/partial/menu'], function(menu) {
                 $injector.invoke(menu, this, {'$scope': $scope});
             });
+        }])
+        .controller('GetVersionController', ['$scope', '$injector', function($scope, $injector) {
+            require(['app/controllers/partial/get'], function(login) {
+                $injector.invoke(login, this, {'$scope': $scope});
+            });
+        }])
+        .controller('SetVersionController', ['$scope', '$injector', function($scope, $injector) {
+            require(['app/controllers/partial/set'], function(login) {
+                $injector.invoke(login, this, {'$scope': $scope});
+            });
         }]
 	);
 });

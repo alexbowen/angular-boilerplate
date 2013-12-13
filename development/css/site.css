@@ -6,25 +6,23 @@
 @media all and (min-width: 1024px)  {
     html  {
         height:100%;
-        border: 5px solid purple
     }
 
     body {
-        font-size:13px
+        height:100%;
+        font-size:13px;
     }
 }
 
 @media all and (max-width: 1023px)  {
     html  {
         height:100%;
-        border: 5px solid red
     }
 }
 
 @media all and (max-width: 767px)  {
     html  {
         height:100%;
-        border: 5px solid green
     }
 }
 
@@ -56,12 +54,42 @@
 
 /* general */
 
+.menu {
+    height:10%
+}
+
+.content {
+    height:90%;
+}
+
 .error {
     color: red;
     width: 100%;
     text-align: center;
     display: block;
     padding:5px
+}
+
+.flex-box {
+    display:-webkit-flex;
+    display:flex
+}
+
+.side {
+    flex:1
+}
+
+.page-holder {
+    flex:4;
+    padding:0 2em 0 0;
+    height:100%
+}
+
+.page-holder ul li {
+    width:48%;
+    display:inline-block;
+    padding:0.5%;
+    height:100%
 }
 
 /* login */

@@ -12,7 +12,7 @@ function (angular, cookie) {
     	        AuthServiceProvider
     	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
     	        	.success(function(response) {
-                        console.log('response', response);
+                        //console.log('response', response);
                         if (response.authToken && response.StatusCode === 200) {
 
                             cookie.remove('TA-authToken');
