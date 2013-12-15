@@ -31,8 +31,18 @@ define([
                 redirectTo  : '/'
             });
     })
-    .run(['$rootScope', '$httpBackend', '$http', function ($rootScope, $httpBackend, $http) {
-
+    .constant('ENVIRONMENT', {
+        name: 'development',
+        mock: {
+            http:true
+        }
+    })
+    .constant('MODULES', {
+        auth: true,
+        menu: true
+    })
+    .run(['$rootScope', '$httpBackend', '$http',         'ENVIRONMENT', function ($rootScope, $httpBackend, $http, environment) {
+console.log(environment);
         // Load pages on startup
         $http.get('pages.json').success(function (data) {
             $rootScope.pages = data;
