@@ -11,31 +11,29 @@
 </head>
 <body ng-controller="ApplicationController">
 
-<ul class="dropdown-menu">
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Settings</a></li>
-    <li class="divider"></li>
-    <li><a href="index.html">Sign In</a></li>
-</ul>
+<header>
+    <h1>Application Version Control</h1>
+    <nav>
+        <ul ng-controller="MenuController">
+            <li ng-repeat="item in menu" ng-class="{active: page == item.title_s}"><a href="#/{{item.title_s}}">{{item.title_s}}</a></li>
+            <li><a href="index.html">Sign out</a></li>
+        </ul>
+    </nav>
+</header>
 
-<!-- Navbar -->
-<div class="menu">
-<ul ng-controller="MenuController">
-    <li ng-repeat="item in menu" ng-class="{active: page == item.title_s}"><a href="#/{{item.title_s}}">{{item.title_s}}</a></li>
-</ul>
-    </div>
-
-<div class="content flex-box">
-    <div class="page-holder">
+<div class="content">
+    <section class="page-holder">
         <ng-view></ng-view>
 
         <login></login>
-    </div>
+    </section>
 
-    <div class="well side">
-        <h3>Side Bar</h3>
-        <p>This is static content that will stay the same between pages.</p>
-    </div>
+    <section class="side-bar">
+        <div class="well">
+            <h3>Side Bar</h3>
+            <p>This is static content that will stay the same between pages.</p>
+        </div>
+    </section>
 </div>
 <script data-main="development/js/main.js" src="development/js/lib/require/require.js"></script>
 </body>

@@ -1,6 +1,6 @@
 <ul>
-    <li><setversion></setversion></li>
-    <li><getversion></getversion></li>
+    <li><span><setversion></setversion></span></li>
+    <li><span><getversion></getversion></span></li>
 </ul>
 
 
