@@ -110,11 +110,10 @@ li span {
 
 h1 {
     font-size:2em;
-    line-height:2em;
     color:white;
-    line-height:0;
-    color:brown;
-    margin:1em 0;
+    color:#d20a2c;
+    background: url('../images/di-logo.png') no-repeat right top;
+    height:40px
 }
 
 h2 {
@@ -138,14 +137,14 @@ form input[type='text']  {
 }
 
 header {
-    height:40px;
+    height:80px;
     position:relative;
     margin:1em;
 }
 
 nav {
     height:40px;
-    background-color:brown;
+    background-color:#d20a2c;
     -webkit-border-radius: 3px
 }
 

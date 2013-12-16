@@ -10,11 +10,11 @@ define(['angular'], function (angular) {
                 var $http = $injector.get('$http');
 
                 return {
-                    set : function () {
-                        return $http.post('/appversion');
+                    set : function (params) {
+                        return $http.post('/appversion', JSON.stringify(params));
                     },
-                    get : function (id) {
-                        return $http.get('/appversion/' + id + '/');
+                    get : function (params) {
+                        return $http.get('/appversion/' + params.id + '/');
                     }
                 }
             }]

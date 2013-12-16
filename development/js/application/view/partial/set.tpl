@@ -1,17 +1,14 @@
-<div id="contact-form">
-    <h2>Get an App's Version</h2>
-    <form id="getVersion">
+<div id="contact-form" ng-controller="SetVersionController">
+    <h2>Set an App's Version</h2>
+    <form id="setVersion" ng-submit="setAppId()">
         <fieldset>
             <label for="appid">App Id</label>
-            <input type="text" name="getappid" id="getappid" placeholder="AppName">
+            <input type="text" name="appid" placeholder="" ng-model="appid">
 
             <label for="version">Version</label>
-            <input type="text" name="getversion" id="getversion" placeholder="1.2.3">
+            <input type="text" name="version" placeholder="1.2.3" ng-model="version">
 
-            <label for="createddate">Created Date</label>
-            <input type="text" name="getcreateddate" id="getcreateddate" placeholder="02 Jan 06 15:04">
-
-            <input type="submit" name="getsubmit" id="getsubmit" value="Get app version" />
+            <input type="submit" name="submit" id="submit" value="Set app version" />
         </fieldset>
     </form>
 </div>
