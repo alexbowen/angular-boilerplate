@@ -63,7 +63,10 @@ module.exports = function(grunt) {
                         angular			: 'lib/angular/angular',
                         angularRoute 	: 'lib/angular/angular-route',
                         angularMocks    : 'lib/angular-mocks/angular-mocks',
-                        text            : 'lib/requirejs-text/text'
+                        text            : 'lib/requirejs-text/text',
+                        env             : '../../config/development',
+                        config          : '../../config/application',
+                        mock            : '../../tests/mocks'
 
                     },
                     modules: [
@@ -180,6 +183,8 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['jshint', 'karma:e2e', 'karma:unit']);
 
     grunt.registerTask('unit', ['karma:unit']);
+
+    grunt.registerTask('copy', ['copy:main']);
 
     grunt.registerTask('e2e', ['karma:e2e']);
 

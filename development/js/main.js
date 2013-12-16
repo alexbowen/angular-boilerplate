@@ -5,7 +5,10 @@ require.config({
         angular         : 'lib/bower_components/angular/angular',
         angularRoute    : 'lib/bower_components/angular-route/angular-route',
         angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
-        text            : 'lib/bower_components/requirejs-text/text'
+        text            : 'lib/bower_components/requirejs-text/text',
+        env             : '../../config/development',
+        config          : '../../config/application',
+        mock            : '../../tests/mocks'
     },
     shim: {
         'angular' : {'exports' : 'angular'},

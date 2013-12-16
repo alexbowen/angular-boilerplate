@@ -1,3 +1,3 @@
 define([
-    'app/controllers/partial/login'
+    //'app/controllers/partial/login'
 ]);
