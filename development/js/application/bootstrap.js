@@ -2,7 +2,6 @@ define([
     'angular',
     'app/controllers',
     'app/services',
-    'mock/http',
     'env',
     'app/filters',
     'app/directives',
@@ -13,13 +12,12 @@ define([
     var Application =  angular.module('application', [
         'ngRoute',
         'ENVIRONMENT',
-        'http',
         'controllers',
         'services',
 		'filters',
 		'directives'
     ])
-    .config(function($routeProvider, ENVIRONMENT) {
+    .config(['$routeProvider', '$injector', 'ENVIRONMENT', function ($routeProvider, $injector, ENVIRONMENT) {
 
         $routeProvider
             .when('/:page', {
@@ -33,7 +31,7 @@ define([
             .otherwise({
                 redirectTo  : '/'
             });
-    })
+    }])
     .run(['$rootScope', '$http', function ($rootScope, $http) {
         // Load pages on startup
         $http.get('pages.json').success(function (data) {

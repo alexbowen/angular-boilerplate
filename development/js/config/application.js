@@ -4,7 +4,7 @@ define(['angular'],
 
     return angular.module('MODULES', [])
         .constant('MODULES', {
-            auth: true,
-            menu: true
+            login: false,
+            menu: false
         })
 });

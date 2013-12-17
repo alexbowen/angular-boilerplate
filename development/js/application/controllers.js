@@ -2,11 +2,10 @@ define(['angular', 'config'],
 function (angular) {
 	'use strict';
 
-	var controllers = angular.module('controllers', ['MODULES']);
+	return angular.module('controllers', ['MODULES'])
 
-
-		// More involved example where controller is required from an external file
-    controllers.controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
+	// More involved example where controller is required from an external file
+    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/application'], function(main) {
 				// injector method takes an array of modules as the first argument
 				// if you want your controller to be able to use components from
@@ -15,17 +14,17 @@ function (angular) {
 				$injector.invoke(main, this, {'$scope': $scope});
 			});
 		}])
-    controllers.controller('RouteController', ['$scope', '$injector', function($scope, $injector) {
+    .controller('RouteController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/route'], function(route) {
 				$injector.invoke(route, this, {'$scope': $scope});
 			});
 		}])
-//    controllers.controller('LoginController', ['$scope', '$injector', '$location', '$http', '$rootScope', '$window', function($scope, $injector) {
-//            require(['app/controllers/partial/login'], function(login) {
-//                $injector.invoke(login, this, {'$scope': $scope});
-//            });
-//        }])
-    controllers.controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
+    .controller('LoginController', ['$scope', '$injector', function($scope, $injector) {
+           require(['app/controllers/partial/login'], function(login) {
+               $injector.invoke(login, this, {'$scope': $scope});
+           });
+       }])
+    .controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
             require(['app/controllers/partial/menu'], function(menu) {
                 $injector.invoke(menu, this, {'$scope': $scope});
             });

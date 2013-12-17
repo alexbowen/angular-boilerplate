@@ -11,25 +11,16 @@
 </head>
 <body ng-controller="ApplicationController">
 
-<ul class="dropdown-menu">
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Settings</a></li>
-    <li class="divider"></li>
-    <li><a href="index.html">Sign In</a></li>
-</ul>
-
-<!-- Navbar -->
-<ul ng-controller="MenuController">
+<ul ng-controller="MenuController" ng-if="menuactive">
     <li ng-repeat="item in menu" ng-class="{active: page == item.title_s}"><a href="#/{{item.title_s}}">{{item.title_s}}</a></li>
 </ul>
 
-<!-- Content -->
 <div id="page-holder">
 
     <!-- Dynamic content -->
     <ng-view></ng-view>
 
-    <!--<login></login>-->
+    <login ng-if="loginactive"></login>
 
 </div>
 

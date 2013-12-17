@@ -2,9 +2,13 @@ define(['angular', 'angularMocks'],
     function (angular) {
         'use strict';
 
-    var http = angular.module('http', ['ngMockE2E'])
+    return angular.module('LoginMock', ['ngMockE2E'])
 
-        .run(function($httpBackend) {
+    .provider('LoginMockProvider', function() {
+
+        this.$get = ['$rootScope','$injector', function($rootScope, $injector) {
+
+            var $httpBackend = $injector.get('$httpBackend');
 
             $httpBackend.whenGET('pages.json').passThrough();
             $httpBackend.whenGET(/.*\.tpl/).passThrough();
@@ -57,7 +61,6 @@ define(['angular', 'angularMocks'],
                 "StatusCode":501,
                 "StatusMessage":"request failed"
             });
-        });
-
-    return http;
+        }];
+    });
 });

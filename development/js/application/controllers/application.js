@@ -1,10 +1,14 @@
-define(['angular', 'utils/cookie'],
+define(['angular', 'utils/cookie', 'config'],
 function (angular, cookie) {
-	return ['$scope', '$rootScope', function($scope, $rootScope) {
+	return ['$scope', '$rootScope', 'MODULES', function($scope, $rootScope, MODULES) {
 
-        cookie.remove('TA-authToken');  //TEMP
+        for (var m in MODULES) {
+            $scope[m + 'active'] = MODULES[m];
+        }
 
-        $scope.text = 'Hello World!';
+        //cookie.remove('TA-authToken');  //TEMP
+
+        $scope.text = 'test test';
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
             $rootScope.authenticated = true;

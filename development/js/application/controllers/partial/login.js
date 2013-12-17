@@ -1,6 +1,6 @@
-define(['angular', 'utils/cookie'],
+define(['angular', 'utils/cookie', 'mocks'],
 function (angular, cookie) {
-    return ['$scope', 'AuthServiceProvider', '$rootScope', function($scope, AuthServiceProvider, $rootScope) {
+    return ['$scope', 'AuthServiceProvider', '$rootScope', 'LoginMockProvider', function($scope, AuthServiceProvider, $rootScope, LoginMockProvider) {
 
         $scope.showEnter = true;
         $scope.showForgot = false;

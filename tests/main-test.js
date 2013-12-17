@@ -17,7 +17,10 @@ require.config({
 		angularRoute    : '/base/development/js/lib/bower_components/angular-route/angular-route',
 		angularMocks    : '/base/development/js/lib/bower_components/angular-mocks/angular-mocks',
 		text            : '/base/development/js/lib/bower_components/requirejs-text/text',
-		fixtures        : '/base/tests/unit/fixtures'
+		fixtures        : '/base/tests/unit/fixtures',
+		env             : '/base/development/js/config/development',
+        config          : '/base/development/js/config/application',
+        mocks            : '/base/development/js/mocks/http'
 
 	},
 	baseUrl: '/base/development/js',

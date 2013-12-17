@@ -8,7 +8,7 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
 				elm.text(version);
 		};
 	}])
-	.directive('login', function($compile) {
+	.directive('login', ['$compile', function($compile) {
 		return {
 			restrict: 'E',
             controller: 'LoginController',
@@ -17,5 +17,5 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
 
 			}
 		};
-	});
+	}]);
 });
