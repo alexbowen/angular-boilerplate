@@ -3,6 +3,7 @@ define([
     'app/controllers',
     'app/services',
     'env',
+    'config',
     'app/filters',
     'app/directives',
     'angularRoute'
@@ -12,13 +13,14 @@ define([
     var Application =  angular.module('application', [
         'ngRoute',
         'ENVIRONMENT',
+        'APPLICATION'
         'controllers',
         'services',
 		'filters',
 		'directives'
     ])
-    .config(['$routeProvider', '$injector', 'ENVIRONMENT', function ($routeProvider, $injector, ENVIRONMENT) {
-
+    .config(['$routeProvider', '$injector', 'ENVIRONMENT', 'APPLICATION', function ($routeProvider, $injector, ENVIRONMENT, APPLICATION) {
+console.log(APPLICATION);
         $routeProvider
             .when('/:page', {
                 templateUrl : function (params) { return ENVIRONMENT.name + '/js/application/view/page/' + params.page + '.tpl'; },

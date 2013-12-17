@@ -1,8 +1,8 @@
-define(['angular', 'config'],
+define(['angular'],
 function (angular) {
 	'use strict';
 
-	return angular.module('controllers', ['MODULES'])
+	return angular.module('controllers', [])
 
 	// More involved example where controller is required from an external file
     .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
