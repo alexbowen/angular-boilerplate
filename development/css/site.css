@@ -88,6 +88,7 @@
         float:left;
         clear:both;
         width:100%;
+        margin-top:2em;
     }
 
     .content {
@@ -123,16 +124,19 @@ h1 {
     color:#d20a2c;
     height:36px;
     margin: 0 0.5em 2px;
+    text-shadow: 2px 1px 2px #cccccc;
 }
 
 h2 {
     font-size:1.6em;
     line-height:1.6em;
     margin:0;
+    text-shadow: 2px 1px 2px #dddddd;
 }
 
 h3 {
     margin: 0 0 10px;
+    text-shadow: 2px 1px 2px #dddddd;
 }
 
 ul {
