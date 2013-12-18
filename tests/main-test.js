@@ -20,8 +20,7 @@ require.config({
 		fixtures        : '/base/tests/unit/fixtures',
 		env             : '/base/development/js/config/development',
         config          : '/base/development/js/config/application',
-        mocks            : '/base/development/js/mocks/http'
-
+        mocks           : '/base/development/js/mocks/http'
 	},
 	baseUrl: '/base/development/js',
 	shim: {

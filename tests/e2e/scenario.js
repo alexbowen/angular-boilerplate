@@ -3,27 +3,18 @@
 (function() {
 'use strict';
 
-	describe('Transform admin', function() {
+	describe('Deer Hunter', function() {
 		beforeEach(function() {
-			browser().navigateTo('/');
+			browser().navigateTo('/development/');
 			sleep(1);
 		});
 
-
-		it('should automatically redirect to /#/ when location hash/fragment is empty', function() {
-			expect(browser().location().url()).toBe("/");
+		it('page title should be Deer Hunter', function() {
+			expect(element('h1').text()).toBe("Deer Hunter");
 		});
 
-		describe('users', function() {
-			beforeEach(function() {
-				browser().navigateTo('/#/users');
-				sleep(1);
-			});
-
-			it('should...', function() {
-                expect(browser().location().url()).toBe("/users");
-			});
+		it('page title should be Deer Hunter', function() {
+			expect(element('#page-holder p').text()).toBe("Hello World!");
 		});
 	});
-
 })();

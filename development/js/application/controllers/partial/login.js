@@ -1,17 +1,22 @@
-define(['angular', 'utils/cookie', 'mocks'],
-function (angular, cookie) {
-    return ['$scope', 'AuthServiceProvider', '$rootScope', 'LoginMockProvider', function($scope, AuthServiceProvider, $rootScope, LoginMockProvider) {
+/*
+jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true,
+undef:true, unused:true, curly:true, browser:true, indent:4, maxerr:50, smarttabs:true
+*/
+define(['utils/cookie'],
+function (cookie) {
+
+    return ['$scope', 'AuthServiceProvider', '$rootScope', function($scope, AuthServiceProvider, $rootScope) {
 
         $scope.showEnter = true;
         $scope.showForgot = false;
 
-    	$scope.authenticate = function () {
+        $scope.authenticate = function () {
 
            if ($scope.validatePassword($scope.user.pass)) {
 
-    	        AuthServiceProvider
-    	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
-    	        	.success(function(response) {
+                AuthServiceProvider
+                    .authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
+                    .success(function(response) {
                         console.log('response', response);
                         if (response.authToken && response.StatusCode === 200) {
 
@@ -38,7 +43,7 @@ function (angular, cookie) {
                     .error(function () {
                         $scope.error = 'Request error';
                     });
-    	    } else {
+            } else {
                 $scope.error = 'Invalid password';
             }
         };
@@ -54,7 +59,7 @@ function (angular, cookie) {
             }
 
             return false;
-        }
+        };
 
         $scope.resetRequest = function () {
             AuthServiceProvider

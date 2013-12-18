@@ -1,14 +1,19 @@
-define(['angular', 'utils/cookie', 'config'],
-function (angular, cookie) {
-	return ['$scope', '$rootScope', 'MODULES', function($scope, $rootScope, MODULES) {
+define(['utils/cookie'],
+function (cookie) {
 
-        for (var m in MODULES) {
-            $scope[m + 'active'] = MODULES[m];
+	return ['$scope', '$rootScope', 'APPLICATION', function($scope, $rootScope, APPLICATION) {
+
+        for (var m in APPLICATION.modules) {
+            if (APPLICATION.modules.hasOwnProperty(APPLICATION.modules[m])) {
+                $scope[m + 'active'] = APPLICATION.modules[m];
+            }
         }
 
         //cookie.remove('TA-authToken');  //TEMP
+        $rootScope.title = APPLICATION.name;
+        
 
-        $scope.text = 'test test';
+        $scope.title = 'Deer Hunter';
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
             $rootScope.authenticated = true;

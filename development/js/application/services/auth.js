@@ -19,7 +19,7 @@ define(['angular'], function (angular) {
                     resetAction : function (credentials) {
                         return $http.post('/login/actionpasswordreset', JSON.stringify(credentials));
                     }
-                }
-            }]
+                };
+            }];
         });
 });

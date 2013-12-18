@@ -1,11 +1,10 @@
-define(['angular'],
+define(['angular', 'config', 'app/controllers/application', 'app/controllers/route', 'app/controllers/partial/login', 'app/controllers/partial/menu'],
 function (angular) {
 	'use strict';
 
-	return angular.module('controllers', [])
+	return angular.module('controllers', ['APPLICATION'])
 
-	// More involved example where controller is required from an external file
-    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
+	    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/application'], function(main) {
 				// injector method takes an array of modules as the first argument
 				// if you want your controller to be able to use components from
@@ -14,22 +13,19 @@ function (angular) {
 				$injector.invoke(main, this, {'$scope': $scope});
 			});
 		}])
-    .controller('RouteController', ['$scope', '$injector', function($scope, $injector) {
+	    .controller('RouteController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/route'], function(route) {
 				$injector.invoke(route, this, {'$scope': $scope});
 			});
 		}])
-    .controller('LoginController', ['$scope', '$injector', function($scope, $injector) {
-           require(['app/controllers/partial/login'], function(login) {
-               $injector.invoke(login, this, {'$scope': $scope});
-           });
-       }])
-    .controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
-            require(['app/controllers/partial/menu'], function(menu) {
-                $injector.invoke(menu, this, {'$scope': $scope});
-            });
-        }]
-	);
-
-    return controllers;
+	    .controller('LoginController', ['$scope', '$injector', function($scope, $injector) {
+		   require(['app/controllers/partial/login'], function(login) {
+		       $injector.invoke(login, this, {'$scope': $scope});
+		   });
+		}])
+	    .controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
+	        require(['app/controllers/partial/menu'], function(menu) {
+	            $injector.invoke(menu, this, {'$scope': $scope});
+	        });
+	    }]);
 });

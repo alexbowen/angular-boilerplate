@@ -1,5 +1,4 @@
-define(['angular'],
-function (angular) {
+define([], function () {
 	return ['$scope', '$rootScope', '$routeParams', function($scope, $rootScope, $routeParams) {
 
 		// Getting the page from $routeParams

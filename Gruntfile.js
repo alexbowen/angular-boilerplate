@@ -18,22 +18,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-//        mocha: {
-//            all: {
-//                src: ['TestRunner.html'],
-//                options: {
-//                    mocha: {
-//                        ignoreLeaks: true
-//                    },
-//                    reporter: function(runner) {
-//                        new mocha.reporters.Spec(runner);
-//                        new mocha.reporters.Teamcity(runner);
-//                    },
-//                    ui : 'bdd',
-//                    run: false
-//                }
-//            }
-//        },
         jshint: {
             options : {
                 'smarttabs'   : true,
@@ -48,8 +32,7 @@ module.exports = function(grunt) {
                     'jQuery'  : false
                 }
             },
-            beforeconcat: ['development/js/application/**/*.js'],
-            afterconcat: ['production/js/application/**/*.js']
+            beforeconcat: ['development/js/application/**/*.js']
         },
         requirejs: {
             js: {
@@ -57,24 +40,26 @@ module.exports = function(grunt) {
                     baseUrl: "development/js",
                     dir: "production/js",
                     preserveLicenseComments: false,
+                    fileExclusionRegExp: /^(.*)min\.js$/,
                     paths: {
                         app             : 'application',
                         jquery 			: 'lib/jquery/jquery',
-                        angular			: 'lib/angular/angular',
-                        angularRoute 	: 'lib/angular/angular-route',
-                        angularMocks    : 'lib/angular-mocks/angular-mocks',
+                        angular         : 'lib/bower_components/angular/angular',
+                        angularRoute    : 'lib/bower_components/angular-route/angular-route',
+                        angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
+                        text            : 'lib/bower_components/requirejs-text/text',
                         text            : 'lib/requirejs-text/text',
-                        env             : '../../config/development',
-                        config          : '../../config/application',
-                        mock            : '../../tests/mocks'
-
+                        env             : 'config/' + grunt.option('environment'),
+                        config          : 'config/application',
+                        mocks           : 'mocks/http'
                     },
                     modules: [
                         {
-                            name: 'packages/main'
+                            name: 'packages/main',
+                            exclude: ['packages/angular']
                         },
                         {
-                            name: 'packages/users',
+                            name: 'packages/angular',
                             exclude: ['packages/main']
                         }
                     ]
@@ -88,21 +73,14 @@ module.exports = function(grunt) {
                 }
             }
         },
-        copy : {
-            main : {
-                files : [
-                    {src : './development/images/**', dest : './production'},
-                    {src : './development/fonts/**', dest : './production'}
-                ]
-            }
-        },
         karma    : {
-            ci  : { // runs tests one time in PhantomJS, good for continuous integration
+            ci  : { // runs tests one time in PhantomJS, good for CI
                 autoWatch: false,
-                configFile: 'config/karma.conf.js',
+                configFile: 'config/karma-e2e.conf.js',
+                singleRun : true,
                 browsers  : ['PhantomJS']
             },
-            unit: { // start testing server that listens for code updates
+            unit: {
                 autoWatch: false,
                 configFile: 'config/karma.conf.js',
                 singleRun : true,
@@ -123,7 +101,7 @@ module.exports = function(grunt) {
         },
         modernizr: {
 
-            "devFile" : "./development/js/lib/modernizr/modernizr.js",
+            "devFile" : "./development/js/lib/modernizr/modernizr-dev.js",
 
             "outputFile" : "./production/js/lib/modernizr/modernizr-custom.js",
 
@@ -164,11 +142,10 @@ module.exports = function(grunt) {
             // custom Modernizr tests
             "customTests" : []
         }
+
     });
 
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
-
-    grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.loadNpmTasks('grunt-karma');
 
@@ -178,17 +155,13 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
-    grunt.registerTask('default', ['yuidoc', 'karma:e2e', 'karma:unit', 'requirejs:css', 'requirejs:js', 'copy:main']);
+    grunt.registerTask('default', ['jshint', 'karma:unit', 'yuidoc', 'modernizr', 'requirejs:css', 'requirejs:js']);
 
-    grunt.registerTask('test', ['jshint', 'karma:e2e', 'karma:unit']);
+    grunt.registerTask('build', ['yuidoc', 'modernizr', 'requirejs:css', 'requirejs:js']);
 
-    grunt.registerTask('unit', ['karma:unit']);
+    grunt.registerTask('test', ['jshint', 'karma:unit']);
 
-    grunt.registerTask('copy', ['copy:main']);
+    grunt.registerTask('e2e', ['jshint', 'karma:e2e']);
 
-    grunt.registerTask('e2e', ['karma:e2e']);
-
-    grunt.registerTask('css', ['requirejs:css']);
-
-    grunt.registerTask('js', ['requirejs:js']);
+    grunt.registerTask('js', ['jshint', 'requirejs:js']);
 };

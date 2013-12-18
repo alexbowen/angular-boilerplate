@@ -1,3 +1,4 @@
 define([
-    'app/controllers/partial/login'
+    'angular',
+    'angularRoute'
 ]);

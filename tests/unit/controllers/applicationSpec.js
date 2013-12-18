@@ -5,7 +5,7 @@ define([
     'angularMocks',
     'app/controllers/application',
     'config'
-], function(angular, mocks, ApplicationController, MODULES) {
+], function(angular, mocks, ApplicationController, APPLICATION) {
     'use strict';
 
     describe('ApplicationController', function () {
@@ -17,12 +17,12 @@ define([
             //declare the controller and inject our empty scope
             $controller(ApplicationController, {
                 $scope  : scope,
-                MODULES : MODULES
+                APPLICATION : APPLICATION
             });
         }));
 
         it('test test', function () {
-            expect(scope.text).toBe('test test');
+            expect(scope.title).toBe('Deer Hunter');
         });
     });
 });

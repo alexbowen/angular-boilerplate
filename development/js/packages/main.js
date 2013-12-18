@@ -1,3 +1,7 @@
 define([
-    //'app/controllers/partial/login'
+    'app/controllers',
+    'app/services',
+    'env',
+    'app/filters',
+    'app/directives'
 ]);

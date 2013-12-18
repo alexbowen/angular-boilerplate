@@ -27,7 +27,7 @@
 }
 body {
   background-image: url("../../../images/body-bg.png");
-  padding: 62px 0 0 110px;
+  padding: 0;
 }
 legend {
   font-size: 18px;
@@ -2461,7 +2461,7 @@ textarea[disabled] {
     width: 30px;
   }
   body {
-    padding: 62px 15px 0 100px;
+    padding: 0;
   }
   .container,
   #main-navbar .container {
@@ -2559,7 +2559,7 @@ textarea[disabled] {
     top: 20px;
   }
   body {
-    padding: 62px 15px 0 100px;
+    padding: 0;
   }
   .container,
   #main-navbar .container {
@@ -2617,7 +2617,7 @@ textarea[disabled] {
     position: static;
   }
   body {
-    padding: 41px 0 0 0;
+    padding: 0;
   }
   .box {
     margin-left: 5px;

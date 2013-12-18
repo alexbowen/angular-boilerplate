@@ -2,65 +2,63 @@ define(['angular', 'angularMocks'],
     function (angular) {
         'use strict';
 
-    return angular.module('LoginMock', ['ngMockE2E'])
+        angular.module('Mocks', [], function($provide, $httpBackend) {
+            $provide.factory('LoginMocks', function() {
+                var shinyNewServiceInstance;
+                var $httpBackend = $injector.get('$httpBackend');
 
-    .provider('LoginMockProvider', function() {
+                $httpBackend.whenGET('pages.json').passThrough();
+                $httpBackend.whenGET(/.*\.tpl/).passThrough();
 
-        this.$get = ['$rootScope','$injector', function($rootScope, $injector) {
+                //Login:Authenticate
+                $httpBackend.whenPOST(/\/login\/authenticate\.*/).respond({
+                    "StatusCode":200,
+                    "StatusMessage":"you are logged in",
+                    'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
+                });
 
-            var $httpBackend = $injector.get('$httpBackend');
+                $httpBackend.whenPOST('/login/authenticate?pass=wrong&user=alex').respond({
+                    "StatusCode":403,
+                    "StatusMessage":"authorisation failed"
+                });
 
-            $httpBackend.whenGET('pages.json').passThrough();
-            $httpBackend.whenGET(/.*\.tpl/).passThrough();
+                $httpBackend.whenGET('/login/authenticate?pass=right&user=alex').respond({
+                    "StatusCode":401,
+                    "StatusMessage":"bad request (GET)"
+                });
 
-            //Login:Authenticate
-            $httpBackend.whenPOST(/\/login\/authenticate\.*/).respond({
-                "StatusCode":200,
-                "StatusMessage":"you are logged in",
-                'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
+                //Login:RequestPasswordReset
+                $httpBackend.whenPOST('/login/requestpasswordreset?user=alex').respond({
+                    "StatusCode":200,
+                    "StatusMessage":"email sent"
+                });
+
+                $httpBackend.whenPOST('/login/requestpasswordreset?user=alexb').respond({
+                    "StatusCode":501,
+                    "StatusMessage":"request failed"
+                });
+
+                //Login:ActionPasswordReset
+                $httpBackend.whenPOST('/login/actionpasswordreset?password=new&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
+                    "StatusCode":200,
+                    "StatusMessage":"success"
+                });
+
+                $httpBackend.whenGET('/login/actionpasswordreset?password=new&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
+                    "StatusCode":400,
+                    "StatusMessage":"bad request (GET)"
+                });
+
+                $httpBackend.whenPOST('/login/actionpasswordreset?password=123&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
+                    "StatusCode":502,
+                    "StatusMessage":"invalid password"
+                });
+
+                $httpBackend.whenPOST('/login/actionpasswordreset?user=alexb').respond({
+                    "StatusCode":501,
+                    "StatusMessage":"request failed"
+                });
+                return shinyNewServiceInstance;
             });
-
-            $httpBackend.whenPOST('/login/authenticate?pass=wrong&user=alex').respond({
-                "StatusCode":403,
-                "StatusMessage":"authorisation failed"
-            });
-
-            $httpBackend.whenGET('/login/authenticate?pass=right&user=alex').respond({
-                "StatusCode":401,
-                "StatusMessage":"bad request (GET)"
-            });
-
-            //Login:RequestPasswordReset
-            $httpBackend.whenPOST('/login/requestpasswordreset?user=alex').respond({
-                "StatusCode":200,
-                "StatusMessage":"email sent"
-            });
-
-            $httpBackend.whenPOST('/login/requestpasswordreset?user=alexb').respond({
-                "StatusCode":501,
-                "StatusMessage":"request failed"
-            });
-
-            //Login:ActionPasswordReset
-            $httpBackend.whenPOST('/login/actionpasswordreset?password=new&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
-                "StatusCode":200,
-                "StatusMessage":"success"
-            });
-
-            $httpBackend.whenGET('/login/actionpasswordreset?password=new&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
-                "StatusCode":400,
-                "StatusMessage":"bad request (GET)"
-            });
-
-            $httpBackend.whenPOST('/login/actionpasswordreset?password=123&resetToken=29277243-a184-4fe6-a815-211600dfe146').respond({
-                "StatusCode":502,
-                "StatusMessage":"invalid password"
-            });
-
-            $httpBackend.whenPOST('/login/actionpasswordreset?user=alexb').respond({
-                "StatusCode":501,
-                "StatusMessage":"request failed"
-            });
-        }];
-    });
+        });
 });

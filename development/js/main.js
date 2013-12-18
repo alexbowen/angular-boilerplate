@@ -8,7 +8,7 @@ require.config({
         text            : 'lib/bower_components/requirejs-text/text',
         env             : 'config/development',
         config          : 'config/application',
-        mocks            : 'mocks/http'
+        mocks           : 'mocks/http'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -27,15 +27,16 @@ require.config({
 window.name = "NG_DEFER_BOOTSTRAP!";
 
 require([
-    'jquery'
+    'angular'
 ], function () {
-    require( [
-        'angular',
+    require([
         'app/bootstrap',
         'packages/main'
-    ], function(angular, app, routes) {
+], function (app) {
+
         'use strict';
-        var $html = angular.element(document.getElementsByTagName('html')[0]);
+        
+        angular.element(document.getElementsByTagName('html')[0]);
 
         angular.element().ready(function() {
             angular.resumeBootstrap([app['name']]);

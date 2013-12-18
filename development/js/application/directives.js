@@ -1,4 +1,4 @@
-define(['angular', 'app/services', 'app/controllers'], function(angular, services, controllers) {
+define(['angular', 'app/services', 'app/controllers'], function (angular, services, controllers) {
 	'use strict';
   /* Directives */
 
@@ -12,7 +12,7 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
 		return {
 			restrict: 'E',
             controller: 'LoginController',
-			templateUrl: 'development/js/application/view/partial/login.tpl',
+			templateUrl: 'js/application/view/partial/login.tpl',
 			link: function(scope, element, attrs) {
 
 			}

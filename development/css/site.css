@@ -1,39 +1,28 @@
-@import url('bootstrap-responsive.css');
 @import url('normalize.css');
 @import url('themes/css/1.0.0/default/bootstrap.css');
-@import url('themes/css/1.0.0/default/adminflare.css');
 
-@media all and (min-width: 1024px)  {
+@media all and (min-width: 791px)  {
     html  {
         height:100%;
-        border: 5px solid purple
     }
 
     body {
-        font-size:13px
+        height:100%;
+        font-size:13px;
     }
 }
 
-@media all and (max-width: 1023px)  {
+@media all and (max-width: 790px)  {
     html  {
         height:100%;
-        border: 5px solid red
+    }
+
+    body {
+        font-size:8px;
+        height:100%;
     }
 }
 
-@media all and (max-width: 767px)  {
-    html  {
-        height:100%;
-        border: 5px solid green
-    }
-}
-
-@media all and (max-width: 320px)  {
-    html  {
-        height:100%;
-        border: 5px solid blue
-    }
-}
 
 #drawingPane {
 	position: relative;
@@ -56,12 +45,106 @@
 
 /* general */
 
+h1 {
+    font-size:2em;
+    color:white;
+    color:#d20a2c;
+    height:36px;
+    margin: 0 0 10px;
+}
+
+h2 {
+    font-size:1.6em;
+    line-height:1.6em;
+    margin:0;
+}
+
+ul {
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+
+li span {
+    display:block;
+}
+
+form input[type='text']  {
+    border:1px solid #bcbcbc;
+}
+
+header {
+    height:96px;
+    position:relative;
+}
+
+section.title {
+    position:relative;
+}
+
+header img {
+    position:absolute;
+    right:1em;
+    top:0;
+}
+
+nav {
+    height:40px;
+    background-color:#d20a2c;
+    -webkit-border-radius: 3px
+}
+
+nav ul {
+    float:right;
+    margin:0 1em;
+}
+
+nav ul li {
+    display:inline-block;
+    margin:0 0 0 1em;
+    height:100%;
+}
+
+nav ul li a {
+    height:100%;
+    display:block;
+    color:#ffffff;
+    font-size:1.2em;
+    line-height: 40px;
+    text-transform:capitalize;
+}
+
+nav ul li a:hover {
+    color:#ffffff;
+}
+
+nav h1 {
+    position:absolute;
+    right:0;
+    top:0;
+    margin:26px;
+}
+
 .error {
     color: red;
     width: 100%;
     text-align: center;
     display: block;
     padding:5px
+}
+
+#page-holder {
+    padding:0;
+    height:100%;
+    margin:1em;
+}
+
+input[type="submit"] {
+    -webkit-border-radius:3px;
+    border:1px solid #bcbcbc;
+    margin-top:10px;
+    width:100%;
+    height:32px;
 }
 
 /* login */
@@ -126,40 +209,6 @@ label a {
     margin: 20px 0 0 0;
     line-height: 26px;
     border: none;
-}
-
-a.header {
-    display: block;
-    margin-bottom: 30px;
-    font-size: 16px;
-    line-height: 25px;
-    width:100%;
-    text-align:center;
-    color: #fff;
-}
-
-a.header:hover {
-    text-decoration: none;
-}
-
-a.header strong {
-    font-size: 22px;
-}
-
-a.header img {
-    display: block;
-    position: absolute;
-    margin: -6px 0 0 -50px;
-}
-
-a.header img, a.header span {
-    opacity: 0.2;
-    filter: ~"alpha(opacity=20)";
-}
-
-a.header:hover img, a.header:hover span {
-    opacity: 0.6;
-    filter: ~"alpha(opacity=60)";
 }
 
 /* Animations */

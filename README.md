@@ -1,10 +1,9 @@
-Angular Boilerplate
-===================
+Deer Hunter Webapp
+==================
 
 A bare bones angular JS SPA that uses the following Javascript Dependencies:
 
 - Angular
-- JQuery
 - RequreJS
 - Karma
 
@@ -26,20 +25,16 @@ The application is built using node.js, all dependencies are listed in package.j
 
 install node.js if not already installed on your machine: ```http://nodejs.org/ ```
 
-There are also depenedecies that need to be installed globally:
-
-```sudo npm install -g yuidocjs ```
-```sudo npm install -g jshint ```
-
 To install the local node modules and dependencies needed for the build: ```sudo npm install ```
 
-The build system uses grunt.js. This enables us to define the build in one config file (Gruntfile.js). For this application we run the follwing processes:
+The build system uses grunt.js. This enables us to define the build in one config file (Gruntfile.js). To run grunt tasks from the command line you will need the global npm package:
+
+```sudo npm install -g grunt-cli ```
+
+For this application we run the following processes and these processes re then run via teamcity to form the CI:
 
 1. Build javascript documentation using yuidoc
-2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed -
-
-```http://localhost:8000/test/e2e/runner.html ```
-
+2. Run karma e2e and unit tests. Phantomjs is also available so we can run headless browser tests. These can also be ran from a browser window if needed ```http://localhost:8000/test/e2e/runner.html ```
 3. Run jshint to lint all the application javascript files
 4. Run requirejs optimizer against all application css
 5. Run requirejs optimizer against all application javascript
@@ -48,8 +43,7 @@ The build system uses grunt.js. This enables us to define the build in one confi
 so we can run 3 commands from the terminal:
 
 - ```grunt ``` build all (default) - steps 1-6 above
-- ```grunt test ``` build test - steps 2 above
-- ```grunt css ``` build CSS - step 4 above
-- ```grunt js ``` build JS - step 5 above
+- ```grunt test ``` build test - steps 2,3 above
+- ```grunt build ``` build CSS - step 1,4,5 above
 
-running ```grunt css ``` or ```grunt js ``` will minify and concatenate all files and place them in a production folder (auto created) with the same structure as the development folder. The javascript build will also analyse all js dependencies from require modules or packages and optimize them so scripts are loaded in the correct order and not duplicated in the built files
+running ```grunt build ``` will minify and concatenate all files and place them in a production folder (auto created) with the same structure as the development folder. The javascript build will also analyse all js dependencies from require modules or packages and optimize them so scripts are loaded in the correct order and not duplicated in the built files
