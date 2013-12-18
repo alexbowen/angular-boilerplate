@@ -8,11 +8,7 @@ define(['angular', 'app/services', 'app/controllers'], function (angular, servic
 				elm.text(version);
 		};
 	}])
-<<<<<<< HEAD
 	.directive('login', function() {
-=======
-	.directive('login', ['$compile', function($compile) {
->>>>>>> master
 		return {
 			restrict: 'E',
             controller: 'LoginController',
@@ -21,13 +17,12 @@ define(['angular', 'app/services', 'app/controllers'], function (angular, servic
 
 			}
 		};
-<<<<<<< HEAD
 	})
     .directive('getversion', function() {
         return {
             restrict: 'E',
             controller: 'GetVersionController',
-            templateUrl: 'development/js/application/view/partial/get.tpl',
+            templateUrl: 'js/application/view/partial/get.tpl',
             link: function(scope, element, attrs) {
 
             }
@@ -37,13 +32,10 @@ define(['angular', 'app/services', 'app/controllers'], function (angular, servic
         return {
             restrict: 'E',
             controller: 'SetVersionController',
-            templateUrl: 'development/js/application/view/partial/set.tpl',
+            templateUrl: 'js/application/view/partial/set.tpl',
             link: function(scope, element, attrs) {
 
             }
         };
     });
-=======
-	}]);
->>>>>>> master
 });

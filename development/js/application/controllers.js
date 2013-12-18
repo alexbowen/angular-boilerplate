@@ -18,8 +18,7 @@ function (angular) {
 				$injector.invoke(route, this, {'$scope': $scope});
 			});
 		}])
-<<<<<<< HEAD
-        .controller('LoginController', ['$scope', '$injector', '$location', '$http', '$rootScope', '$window', function($scope, $injector) {
+        .controller('LoginController', ['$scope', '$injector', function($scope, $injector) {
             require(['app/controllers/partial/login'], function(login) {
                 $injector.invoke(login, this, {'$scope': $scope});
             });
@@ -40,16 +39,4 @@ function (angular) {
             });
         }]
 	);
-=======
-	    .controller('LoginController', ['$scope', '$injector', function($scope, $injector) {
-		   require(['app/controllers/partial/login'], function(login) {
-		       $injector.invoke(login, this, {'$scope': $scope});
-		   });
-		}])
-	    .controller('MenuController', ['$scope', '$injector', function($scope, $injector) {
-	        require(['app/controllers/partial/menu'], function(menu) {
-	            $injector.invoke(menu, this, {'$scope': $scope});
-	        });
-	    }]);
->>>>>>> master
 });

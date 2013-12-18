@@ -37,17 +37,16 @@ define(['angular', 'angularRoute'], function (angular) {
 
             $rootScope.$apply();
         });
-<<<<<<< HEAD
 
-        $httpBackend.whenGET('pages.json').passThrough();
-        $httpBackend.whenGET(/.*\.tpl/).passThrough();
+        // $httpBackend.whenGET('pages.json').passThrough();
+        // $httpBackend.whenGET(/.*\.tpl/).passThrough();
 
-        //Login:Authenticate
-        $httpBackend.whenPOST('/login/authenticate').respond({
-             "StatusCode":200,
-             "StatusMessage":"you are logged in",
-             'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
-        });
+        // //Login:Authenticate
+        // $httpBackend.whenPOST('/login/authenticate').respond({
+        //      "StatusCode":200,
+        //      "StatusMessage":"you are logged in",
+        //      'authToken' : '29277243-a184-4fe6-a815-211600dfe146'
+        // });
 
         // $httpBackend.whenPOST('/login/authenticate?pass=wrong&user=alex').respond({
         //     "StatusCode":403,
@@ -90,11 +89,7 @@ define(['angular', 'angularRoute'], function (angular) {
         //     "StatusCode":501,
         //     "StatusMessage":"request failed"
         // });
-    }])
-;
-=======
     }]);
->>>>>>> master
 
     return Application;
 });

@@ -9,6 +9,7 @@
     body {
         height:100%;
         font-size:13px;
+<<<<<<< HEAD
     }
 
     .page-holder ul li {
@@ -39,6 +40,8 @@ li span {
 
     .side-bar div {
         margin:1em 1em 0 0;
+=======
+>>>>>>> master
     }
 }
 
@@ -50,6 +53,7 @@ li span {
     body {
         font-size:8px;
         height:100%;
+<<<<<<< HEAD
     }
 
     .page-holder ul li {
@@ -83,6 +87,8 @@ li span {
 
     .content {
         margin:1em;
+=======
+>>>>>>> master
     }
 }
 
@@ -112,8 +118,13 @@ h1 {
     font-size:2em;
     color:white;
     color:#d20a2c;
+<<<<<<< HEAD
+    background: url('../images/di-logo.png') no-repeat right top;
+    height:40px
+=======
     height:36px;
     margin: 0 0 10px;
+>>>>>>> master
 }
 
 h2 {
@@ -137,6 +148,11 @@ form input[type='text']  {
 }
 
 header {
+<<<<<<< HEAD
+    height:80px;
+    position:relative;
+    margin:1em;
+=======
     height:96px;
     position:relative;
 }
@@ -149,6 +165,7 @@ header img {
     position:absolute;
     right:1em;
     top:0;
+>>>>>>> master
 }
 
 nav {

@@ -14,17 +14,11 @@ function (cookie) {
 
            if ($scope.validatePassword($scope.user.pass)) {
 
-<<<<<<< HEAD
-    	        AuthServiceProvider
-    	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
-    	        	.success(function(response) {
-                        //console.log('response', response);
-=======
                 AuthServiceProvider
                     .authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
                     .success(function(response) {
                         console.log('response', response);
->>>>>>> master
+
                         if (response.authToken && response.StatusCode === 200) {
 
                             cookie.remove('TA-authToken');

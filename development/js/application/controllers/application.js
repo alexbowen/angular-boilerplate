@@ -1,11 +1,7 @@
 define(['utils/cookie'],
 function (cookie) {
 
-<<<<<<< HEAD
-        //cookie.remove('TA-authToken');  //TEMP
-=======
 	return ['$scope', '$rootScope', 'APPLICATION', function($scope, $rootScope, APPLICATION) {
->>>>>>> master
 
         for (var m in APPLICATION.modules) {
             if (APPLICATION.modules.hasOwnProperty(APPLICATION.modules[m])) {
