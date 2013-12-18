@@ -12,7 +12,7 @@ function (angular) {
                 .error(function () {
                     $scope.error = 'Request error';
                 });
-        }
+        };
 
         $scope.$apply();
     }];

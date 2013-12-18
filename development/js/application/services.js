@@ -5,6 +5,6 @@ function (angular) {
     /* Services */
 
     return angular.module('services', ['AuthService', 'VersionService'])
-        .value('version', '0.1')
+        .value('version', '0.1');
 
 });

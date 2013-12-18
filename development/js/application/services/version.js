@@ -16,7 +16,7 @@ define(['angular'], function (angular) {
                     get : function (params) {
                         return $http.get('/appversion/' + params.id + '/');
                     }
-                }
-            }]
+                };
+            }];
         });
 });

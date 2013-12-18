@@ -2,7 +2,6 @@ define(['angular'],
 function (angular) {
     return ['$scope', 'VersionServiceProvider', '$rootScope', function($scope, VersionServiceProvider, $rootScope) {
 
-
         $scope.getAppId = function () {
             VersionServiceProvider
                 .get({'id' : $scope.appid})
@@ -14,7 +13,7 @@ function (angular) {
                 .error(function () {
                     $scope.error = 'Request error';
                 });
-        }
+        };
 
         $scope.$apply();
     }];

@@ -49,7 +49,7 @@ module.exports = function(grunt) {
                         angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
                         text            : 'lib/bower_components/requirejs-text/text',
                         text            : 'lib/requirejs-text/text',
-                        env             : 'config/' + grunt.option('environment'),
+                        env             : 'config/' + (grunt.option('environment') || 'production'),
                         config          : 'config/application',
                         mocks           : 'mocks/http'
                     },

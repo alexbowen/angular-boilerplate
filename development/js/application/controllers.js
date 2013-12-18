@@ -1,8 +1,16 @@
-define(['angular', 'config', 'app/controllers/application', 'app/controllers/route', 'app/controllers/partial/login', 'app/controllers/partial/menu'],
-function (angular) {
+define([
+    'angular',
+    'config',
+    'app/controllers/application',
+    'app/controllers/route',
+    'app/controllers/partial/login',
+    'app/controllers/partial/get',
+    'app/controllers/partial/set',
+    'app/controllers/partial/menu'
+], function (angular) {
 	'use strict';
 
-	return angular.module('controllers', ['APPLICATION'])
+	return angular.module('controllers', [])
 
 	    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/application'], function(main) {
