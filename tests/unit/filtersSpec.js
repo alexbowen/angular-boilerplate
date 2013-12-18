@@ -3,7 +3,8 @@
 define([
     'angular',
     'angularMocks',
-    'app/bootstrap'
+    'app/bootstrap',
+    'packages/main'
 ], function(angular, mocks, app) {
 	'use strict';
 

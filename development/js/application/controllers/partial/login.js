@@ -1,18 +1,30 @@
-define(['angular', 'utils/cookie'],
-function (angular, cookie) {
+/*
+jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, strict:true,
+undef:true, unused:true, curly:true, browser:true, indent:4, maxerr:50, smarttabs:true
+*/
+define(['utils/cookie'],
+function (cookie) {
+
     return ['$scope', 'AuthServiceProvider', '$rootScope', function($scope, AuthServiceProvider, $rootScope) {
 
         $scope.showEnter = true;
         $scope.showForgot = false;
 
-    	$scope.authenticate = function () {
+        $scope.authenticate = function () {
 
            if ($scope.validatePassword($scope.user.pass)) {
 
+<<<<<<< HEAD
     	        AuthServiceProvider
     	        	.authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
     	        	.success(function(response) {
                         //console.log('response', response);
+=======
+                AuthServiceProvider
+                    .authenticate({'user' : $scope.user.name, 'pass' : $scope.user.pass})
+                    .success(function(response) {
+                        console.log('response', response);
+>>>>>>> master
                         if (response.authToken && response.StatusCode === 200) {
 
                             cookie.remove('TA-authToken');
@@ -38,7 +50,7 @@ function (angular, cookie) {
                     .error(function () {
                         $scope.error = 'Request error';
                     });
-    	    } else {
+            } else {
                 $scope.error = 'Invalid password';
             }
         };
@@ -54,7 +66,7 @@ function (angular, cookie) {
             }
 
             return false;
-        }
+        };
 
         $scope.resetRequest = function () {
             AuthServiceProvider

@@ -9,6 +9,7 @@
     body {
         height:100%;
         font-size:13px;
+<<<<<<< HEAD
     }
 
     .page-holder ul li {
@@ -39,6 +40,8 @@ li span {
 
     .side-bar div {
         margin:1em 1em 0 0;
+=======
+>>>>>>> master
     }
 }
 
@@ -50,6 +53,7 @@ li span {
     body {
         font-size:8px;
         height:100%;
+<<<<<<< HEAD
     }
 
     .page-holder ul li {
@@ -83,6 +87,8 @@ li span {
 
     .content {
         margin:1em;
+=======
+>>>>>>> master
     }
 }
 
@@ -112,8 +118,13 @@ h1 {
     font-size:2em;
     color:white;
     color:#d20a2c;
+<<<<<<< HEAD
     background: url('../images/di-logo.png') no-repeat right top;
     height:40px
+=======
+    height:36px;
+    margin: 0 0 10px;
+>>>>>>> master
 }
 
 h2 {
@@ -137,9 +148,24 @@ form input[type='text']  {
 }
 
 header {
+<<<<<<< HEAD
     height:80px;
     position:relative;
     margin:1em;
+=======
+    height:96px;
+    position:relative;
+}
+
+section.title {
+    position:relative;
+}
+
+header img {
+    position:absolute;
+    right:1em;
+    top:0;
+>>>>>>> master
 }
 
 nav {
@@ -187,6 +213,7 @@ nav h1 {
     padding:5px
 }
 
+<<<<<<< HEAD
 .side-bar {
 }
 
@@ -194,6 +221,12 @@ nav h1 {
 .page-holder {
     padding:0;
     height:100%;
+=======
+#page-holder {
+    padding:0;
+    height:100%;
+    margin:1em;
+>>>>>>> master
 }
 
 input[type="submit"] {
@@ -266,40 +299,6 @@ label a {
     margin: 20px 0 0 0;
     line-height: 26px;
     border: none;
-}
-
-a.header {
-    display: block;
-    margin-bottom: 30px;
-    font-size: 16px;
-    line-height: 25px;
-    width:100%;
-    text-align:center;
-    color: #fff;
-}
-
-a.header:hover {
-    text-decoration: none;
-}
-
-a.header strong {
-    font-size: 22px;
-}
-
-a.header img {
-    display: block;
-    position: absolute;
-    margin: -6px 0 0 -50px;
-}
-
-a.header img, a.header span {
-    opacity: 0.2;
-    filter: ~"alpha(opacity=20)";
-}
-
-a.header:hover img, a.header:hover span {
-    opacity: 0.6;
-    filter: ~"alpha(opacity=60)";
 }
 
 /* Animations */

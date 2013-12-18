@@ -1,4 +1,4 @@
-define(['angular', 'app/services', 'app/controllers'], function(angular, services, controllers) {
+define(['angular', 'app/services', 'app/controllers'], function (angular, services, controllers) {
 	'use strict';
     /* Directives */
 
@@ -8,15 +8,20 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
 				elm.text(version);
 		};
 	}])
+<<<<<<< HEAD
 	.directive('login', function() {
+=======
+	.directive('login', ['$compile', function($compile) {
+>>>>>>> master
 		return {
 			restrict: 'E',
             controller: 'LoginController',
-			templateUrl: 'development/js/application/view/partial/login.tpl',
+			templateUrl: 'js/application/view/partial/login.tpl',
 			link: function(scope, element, attrs) {
 
 			}
 		};
+<<<<<<< HEAD
 	})
     .directive('getversion', function() {
         return {
@@ -38,4 +43,7 @@ define(['angular', 'app/services', 'app/controllers'], function(angular, service
             }
         };
     });
+=======
+	}]);
+>>>>>>> master
 });

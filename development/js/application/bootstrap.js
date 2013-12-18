@@ -1,40 +1,32 @@
-define([
-    'angular',
-    'app/controllers',
-    'app/services',
-    'angularMocks',
-    'app/filters',
-    'app/directives',
-    'angularRoute'
-], function (angular, controllers, services) {
+define(['angular', 'angularRoute'], function (angular) {
     'use strict';
 
     var Application =  angular.module('application', [
         'ngRoute',
-        'ngMockE2E',
         'controllers',
         'services',
 		'filters',
 		'directives'
-    ], function ($routeProvider) {
+    ])
+    .config(['$routeProvider', '$injector', function ($routeProvider, $injector) {
 
         $routeProvider
             .when('/:page', {
-                templateUrl : function(params){ return 'development/js/application/view/page/' + params.page + '.tpl'; },
+                templateUrl : function (params) { return 'js/application/view/page/' + params.page + '.tpl'; },
                 controller  : 'RouteController'
             })
             .when('/', {
-                templateUrl : 'development/js/application/view/page/home.tpl',
+                templateUrl : 'js/application/view/page/home.tpl',
                 controller  : 'RouteController'
             })
             .otherwise({
                 redirectTo  : '/'
             });
-    })
-    .run(['$rootScope', '$httpBackend', '$http', function ($rootScope, $httpBackend, $http) {
-
+    }])
+    .run(['$rootScope', '$http', function ($rootScope, $http) {
         // Load pages on startup
-        $http.get('pages.json').success(function (data) {
+
+        $http.get('js/application/pages.json').success(function (data) {
             $rootScope.pages = data;
         });
 
@@ -45,6 +37,7 @@ define([
 
             $rootScope.$apply();
         });
+<<<<<<< HEAD
 
         $httpBackend.whenGET('pages.json').passThrough();
         $httpBackend.whenGET(/.*\.tpl/).passThrough();
@@ -99,6 +92,9 @@ define([
         // });
     }])
 ;
+=======
+    }]);
+>>>>>>> master
 
     return Application;
 });
