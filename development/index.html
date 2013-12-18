@@ -11,36 +11,37 @@
 </head>
 <body ng-controller="ApplicationController">
 
-<div class="page-holder">
-    <header>
-        <section class="title">
-            <h1>{{title}}</h1>
-            <img src="images/di-logo.png" />
-        </section>
-        <nav>
-            <ul ng-controller="MenuController" ng-if="menuactive">
-                <li ng-repeat="item in menu" ng-class="{active: page == item.title_s}"><a href="#/{{item.title_s}}">{{item.title_s}}</a></li>
-                <li><a href="index.html">Sign out</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="page-holder">
+        <header>
+            <section class="title">
+                <h1>{{title}}</h1>
+                <img src="images/di-logo.png" />
+            </section>
+            <nav>
+                <ul ng-controller="MenuController" ng-if="menuactive">
+                    <li ng-repeat="item in menu" ng-class="{active: page == item.title_s}"><a href="#/{{item.title_s}}">{{item.title_s}}</a></li>
+                    <li><a href="index.html">Sign out</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <div class="content">
-        <section class="main">
-            <ng-view></ng-view>
+        <div class="content">
+            <div>
+                <section class="main">
+                    <ng-view></ng-view>
 
-            <login ng-if="loginactive"></login>
-        </section>
+                    <login ng-if="loginactive"></login>
+                </section>
 
-        <section class="side-bar">
-            <div class="well">
-                <h3>Side Bar</h3>
-                <p>This is static content that will stay the same between pages.</p>
+                <section class="side-bar">
+                    <div class="well">
+                        <h3>Side Bar</h3>
+                        <p>This is static content that will stay the same between pages.</p>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
     </div>
-
-</div>
 
 <script data-main="js/main.js" src="js/lib/require/require.js"></script>
 </body>

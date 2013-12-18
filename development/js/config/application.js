@@ -7,7 +7,7 @@ define(['angular'],
             name: 'Application Version Control',
             modules : {
                 login: false,
-                menu: false
+                menu: true
             }
         })
 });
