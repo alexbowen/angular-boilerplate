@@ -11,7 +11,7 @@
 </head>
 <body ng-controller="ApplicationController">
 
-<div id="page-holder">
+<div class="page-holder">
     <header>
         <section class="title">
             <h1>{{title}}</h1>
@@ -26,10 +26,10 @@
     </header>
 
     <div class="content">
-        <section class="page-holder">
+        <section class="main">
             <ng-view></ng-view>
 
-            <login></login>
+            <login ng-if="loginactive"></login>
         </section>
 
         <section class="side-bar">

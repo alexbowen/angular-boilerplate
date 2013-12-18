@@ -4,7 +4,7 @@ define(['angular'],
 
     return angular.module('APPLICATION', [])
         .constant('APPLICATION', {
-            name: 'Deer Hunter',
+            name: 'Application Version Control',
             modules : {
                 login: false,
                 menu: false

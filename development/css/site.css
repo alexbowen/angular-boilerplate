@@ -1,6 +1,19 @@
 @import url('normalize.css');
 @import url('themes/css/1.0.0/default/bootstrap.css');
 
+@media all and (min-width: 1100px)  {
+    body {
+        background-color:#bcbcbc;
+    }
+    body .page-holder {
+        max-width:1100px;
+        margin:0 auto;
+        padding:1em;
+        box-shadow: 0px 0px 5px 5px #888888;
+        background-color:#f1f1f1;
+    }
+}
+
 @media all and (min-width: 791px)  {
     html  {
         height:100%;
@@ -21,9 +34,8 @@
         flex:1
     }
 
-    .page-holder {
+    .content .main {
         flex:4;
-        margin:1em 0 0 1em;
     }
 
     .content {
@@ -33,9 +45,9 @@
         width:100%;
     }
 
-li span {
-    margin:0 1em 0 0;
-}
+    li span {
+        margin:0 1em 0 0;
+    }
 
     .side-bar div {
         margin:1em 1em 0 0;
@@ -73,12 +85,6 @@ li span {
         float:left;
         clear:both;
         width:100%;
-    }
-
-    .page-holder {
-        width:100%;
-        float:left;
-        margin:0;
     }
 
     .content {
@@ -120,6 +126,10 @@ h2 {
     font-size:1.6em;
     line-height:1.6em;
     margin:0;
+}
+
+h3 {
+    margin: 0 0 10px;
 }
 
 ul {
@@ -196,20 +206,11 @@ nav h1 {
     padding:5px
 }
 
-<<<<<<< HEAD
-.side-bar {
-}
-
 
 .page-holder {
     padding:0;
     height:100%;
-=======
-#page-holder {
-    padding:0;
-    height:100%;
     margin:1em;
->>>>>>> master
 }
 
 input[type="submit"] {
