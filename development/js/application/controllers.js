@@ -10,7 +10,7 @@ define([
 ], function (angular) {
 	'use strict';
 
-	return angular.module('controllers', [])
+	return angular.module('controllers', ['APPLICATION'])
 
 	    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
 			require(['app/controllers/application'], function(main) {
