@@ -2,8 +2,10 @@ define([
     'angular',
     'angularMocks',
     'app/controllers/partial/login',
-    'app/services/auth'
-], function(angular, mocks, LoginController, AuthService) {
+    'app/services/auth',
+    'utils/application',
+    'mocks'
+], function (angular, mocks, LoginController, AuthService, utils) {
 
     describe('LoginController', function() {
         var $httpBackend, scope;
@@ -25,7 +27,7 @@ define([
 
             $httpBackend.whenPOST('/login/authenticate', function (data) {
                 var body = angular.fromJson(data);
-                return body.pass === "Password1"? true : false;
+                return utils.validatePassword(body.pass) ? true : false;
             }).respond({
                 "StatusCode":200,
                 "StatusMessage":"you are logged in",
@@ -34,7 +36,7 @@ define([
 
             $httpBackend.whenPOST('/login/authenticate', function (data) {
                 var body = angular.fromJson(data);
-                return body.pass === "password"? true : false;
+                return !utils.validatePassword(body.pass) ? true : false;
             }).respond({
                 "StatusCode":403,
                 "StatusMessage":"authorisation failed"
@@ -66,17 +68,16 @@ define([
         });
 
         it('authentication fail', function() {
-            //$httpBackend.expectPOST('/login/authenticate', {"user":"alex","pass":"password"});
 
             scope.user = {};
             scope.user.name = 'alex';
             scope.user.pass = 'password'
+
+            //no request should be made here
             scope.authenticate();
-            //$httpBackend.flush();
 
             expect(scope.showLogin).toEqual(true);
             expect(scope.error).toBeDefined();
-
         });
 
         it('enter password is shown by default', function() {
@@ -91,17 +92,17 @@ define([
         });
 
         it('test invalid passwords', function() {
-            expect(scope.validatePassword('password')).toEqual(false);
-            expect(scope.validatePassword('pass')).toEqual(false);
-            expect(scope.validatePassword('P5ss')).toEqual(false);
-            expect(scope.validatePassword('Password')).toEqual(false);
-            expect(scope.validatePassword('password1')).toEqual(false);
-            expect(scope.validatePassword('Password1asswordpasswordpasswordPasss')).toEqual(false);
+            expect(utils.validatePassword('password')).toEqual(false);
+            expect(utils.validatePassword('pass')).toEqual(false);
+            expect(utils.validatePassword('P5ss')).toEqual(false);
+            expect(utils.validatePassword('Password')).toEqual(false);
+            expect(utils.validatePassword('password1')).toEqual(false);
+            expect(utils.validatePassword('Password1asswordpasswordpasswordPasss')).toEqual(false);
         });
 
         it('test valid passwords', function() {
-            expect(scope.validatePassword('Password1')).toEqual(true);
-            expect(scope.validatePassword('pAssw0rd')).toEqual(true);
+            expect(utils.validatePassword('Password1')).toEqual(true);
+            expect(utils.validatePassword('pAssw0rd')).toEqual(true);
         });
     });
 });

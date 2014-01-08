@@ -11,9 +11,6 @@ function (cookie) {
 
         //cookie.remove('TA-authToken');  //TEMP
         $rootScope.title = APPLICATION.name;
-        
-
-        $scope.title = 'Deer Hunter';
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
             $rootScope.authenticated = true;

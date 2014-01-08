@@ -3,17 +3,15 @@
 (function() {
 'use strict';
 
-	describe('Deer Hunter', function() {
-		beforeEach(function() {
-			browser().navigateTo('/development/');
-			sleep(1);
+	describe('Angular Boilerplate', function() {
+
+		it('page title should be Angular Boilerplate', function() {
+			browser().navigateTo('/');
+            sleep(1);
+			expect(element('h1').text()).toBe("Angular Boilerplate");
 		});
 
-		it('page title should be Deer Hunter', function() {
-			expect(element('h1').text()).toBe("Deer Hunter");
-		});
-
-		it('page title should be Deer Hunter', function() {
+		it('page content should be hello world', function() {
 			expect(element('#page-holder p').text()).toBe("Hello World!");
 		});
 	});

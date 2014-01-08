@@ -22,7 +22,7 @@ define([
         }));
 
         it('test test', function () {
-            expect(scope.title).toBe('Deer Hunter');
+            expect(scope.title).toBe(APPLICATION.name);
         });
     });
 });

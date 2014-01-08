@@ -1,12 +1,12 @@
 define(['angular'],
-    function (angular) {
-        'use strict';
+function (angular) {
+    'use strict';
 
     return angular.module('ENVIRONMENT', [])
         .constant('ENVIRONMENT', {
-            name: 'production',
+            name: 'development',
             mock: {
-                http:false
+                http:true
             }
         });
 });

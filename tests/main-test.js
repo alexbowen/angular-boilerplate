@@ -18,7 +18,7 @@ require.config({
 		angularMocks    : '/base/development/js/lib/bower_components/angular-mocks/angular-mocks',
 		text            : '/base/development/js/lib/bower_components/requirejs-text/text',
 		fixtures        : '/base/tests/unit/fixtures',
-		env             : '/base/development/js/config/development',
+		env             : '/base/development/js/config/environment',
         config          : '/base/development/js/config/application',
         mocks           : '/base/development/js/mocks/http'
 	},
