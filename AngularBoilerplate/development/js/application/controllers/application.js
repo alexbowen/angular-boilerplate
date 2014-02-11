@@ -9,7 +9,7 @@ function (cookie) {
             }
         }
 
-        cookie.remove('TA-authToken');  //TEMP
+        //cookie.remove('TA-authToken');  //TEMP
         $rootScope.title = APPLICATION.name;
 
         $rootScope.$on('event:auth-loginConfirmed', function () {
