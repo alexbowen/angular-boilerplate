@@ -2,19 +2,20 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        application : grunt.option('application') || grunt.file.readJSON('package.json').name,
         yuidoc: {
             compile: {
                 name: '<%= pkg.name %>',
                 description: '<%= pkg.description %>',
                 version: '<%= pkg.version %>',
-                logo: "http://adminflare.local/images/af-logo.png",
+                logo: "",
                 options: {
                     "linkNatives": "true",
                     "attributesEmit": "true",
                     "paths": [
-                        "./development/js/application"
+                        "./<%= application %>/development/js/application"
                     ],
-                    "outdir": "./documentation"
+                    "outdir": "./<%= application %>/documentation"
                 }
             }
         },
@@ -26,84 +27,94 @@ module.exports = function(grunt) {
                 'bitwise'     : true, 
                 'curly'       : true,
                 'browser'     : true,
+                'expr'       : true,
                 'globals'     : {
                     '$'       : false,
                     'console' : false,
                     'jQuery'  : false
                 }
             },
-            beforeconcat: ['development/js/application/**/*.js']
+            beforeconcat: ['./<%= application %>/development/js/application/**/*.js']
         },
         requirejs: {
             js: {
                 options : {
-                    baseUrl: "development/js",
-                    dir: "production/js",
+                    baseUrl: "./<%= application %>/development/js",
+                    dir: "./<%= application %>/production/js",
                     preserveLicenseComments: false,
-                    fileExclusionRegExp: /^(.*)min\.js$/,
+                    fileExclusionRegExp: /^(.*)\.min\.js$/,
+                    urlArgs: "bust=" +  (new Date()).getTime(),
                     paths: {
                         app             : 'application',
-                        jquery 			: 'lib/jquery/jquery',
+                        jquery          : 'lib/jquery/jquery',
                         angular         : 'lib/bower_components/angular/angular',
                         angularRoute    : 'lib/bower_components/angular-route/angular-route',
                         angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
                         text            : 'lib/bower_components/requirejs-text/text',
-                        text            : 'lib/requirejs-text/text',
-                        env             : 'config/' + (grunt.option('environment') || 'production'),
+                        modernizr       : 'lib/modernizr/modernizr-dev',
+                        env             : 'config/' + grunt.option('config'),
                         config          : 'config/application',
                         mocks           : 'mocks/http'
                     },
                     modules: [
                         {
                             name: 'packages/main',
-                            exclude: ['packages/angular']
+                            exclude: [
+                                'packages/bootstrap'
+                            ]
                         },
                         {
-                            name: 'packages/angular',
-                            exclude: ['packages/main']
+                            name: 'packages/bootstrap',
+                            exclude: [
+                                'packages/main'
+                            ]
                         }
                     ]
                 }
             },
             css: {
                 options: {
-                    cssIn: "./development/css/site.css",
-                    out: "./production/css/site.css",
+                    cssIn: "./<%= application %>/development/css/site.css",
+                    out: "./<%= application %>/production/css/site.css",
                     optimizeCss: "default"
                 }
             }
         },
         karma    : {
-            ci  : { // runs tests one time in PhantomJS, good for CI
-                autoWatch: false,
-                configFile: 'config/karma-e2e.conf.js',
-                singleRun : true,
-                browsers  : ['PhantomJS']
-            },
             unit: {
                 autoWatch: false,
-                configFile: 'config/karma.conf.js',
+                configFile: './<%= application %>/config/karma.conf.js',
                 singleRun : true,
                 browsers  : ['Chrome']
             },
             watch: { // used in grunt watch context
                 background: true,
-                configFile: 'config/karma.conf.js',
+                configFile: './<%= application %>/config/karma.conf.js',
                 singleRun: false,
                 browsers  : ['Chrome']
+            }
+        },
+        protractor: {
+            options: {
+                configFile: "<%= application %>/config/protractor.conf.js",
+                keepAlive: true, // If false, the grunt process stops when the test fails.
+                noColor: false, // If true, protractor will not use colors in its output.
+                args: {
+                    // Arguments passed to the command
+                }
             },
-            e2e : {
-                autoWatch: false,
-                configFile: 'config/karma-e2e.conf.js',
-                singleRun : true,
-                browsers  : ['Chrome']
+            your_target: {
+                options: {
+                    configFile: "<%= application %>/config/protractor.conf.js", // Target-specific config file
+                    args: {} // Target-specific arguments
+                }
             }
         },
         modernizr: {
 
-            "devFile" : "./development/js/lib/modernizr/modernizr-dev.js",
+            "devFile" : "./<%= application %>/development/js/lib/modernizr/modernizr-dev.js",
 
-            "outputFile" : "./production/js/lib/modernizr/modernizr-custom.js",
+            "outputFile" : "./<%= application %>/production/js/lib/modernizr/modernizr-custom.js",
 
             // Based on default settings on http://modernizr.com/download/
             "extra" : {
@@ -149,6 +160,8 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-karma');
 
+    grunt.loadNpmTasks('grunt-protractor-runner');
+
     grunt.loadNpmTasks("grunt-modernizr");
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -161,7 +174,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test', ['jshint', 'karma:unit']);
 
-    grunt.registerTask('e2e', ['jshint', 'karma:e2e']);
-
     grunt.registerTask('js', ['jshint', 'requirejs:js']);
+
+    grunt.registerTask('css', ['requirejs:css']);
 };

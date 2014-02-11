@@ -1,0 +1,16 @@
+{
+  "name": "app-deps",
+  "version": "0.2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.7",
+    "angular-route": "~1.2.7",
+    "angular-mocks": "~1.2.7"
+  }
+}

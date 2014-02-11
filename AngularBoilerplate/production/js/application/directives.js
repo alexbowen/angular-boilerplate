@@ -1,0 +1,1 @@
+define(["angular","app/services","app/controllers"],function(e,t,n){return e.module("directives",["services","controllers"]).directive("appVersion",["version",function(e){return function(t,n,r){n.text(e)}}]).directive("login",function(e){return{restrict:"E",controller:"LoginController",templateUrl:"development/js/application/view/partial/login.tpl",link:function(e,t,n){}}})});

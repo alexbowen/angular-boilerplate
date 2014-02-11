@@ -1,0 +1,13 @@
+{
+    "project": {
+        "name": "TransformAdmin",
+        "description": "Transform Admin Application",
+        "version": "0.1.0",
+        "logo": "http://adminflare.local/images/af-logo.png"
+    },
+    "files": {},
+    "modules": {},
+    "classes": {},
+    "classitems": [],
+    "warnings": []
+}

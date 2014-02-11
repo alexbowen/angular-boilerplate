@@ -1,0 +1,1 @@
+define(["angular","app/services/auth"],function(e){return e.module("services",["AuthService"]).value("version","0.1")});

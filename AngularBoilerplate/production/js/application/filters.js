@@ -1,0 +1,1 @@
+define(["angular","app/services"],function(e,t){return e.module("filters",["services"]).filter("interpolate",["version",function(e){return function(t){return String(t).replace(/\%VERSION\%/mg,e)}}])});

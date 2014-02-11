@@ -1,0 +1,1 @@
+define(["angular","utils/cookie"],function(e,t){return["$scope","$rootScope",function(e,n){t.remove("TA-authToken"),e.text="Hello World!",n.$on("event:auth-loginConfirmed",function(){n.authenticated=!0}),n.$on("event:auth-loginRefused",function(e,t){n.authenticated=!1}),e.$apply()}]});
