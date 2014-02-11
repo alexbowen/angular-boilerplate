@@ -7,7 +7,7 @@ define(['angular'],
             name: 'Angular Boilerplate',
             basePage: 'home',
             modules : {
-                login: false,
+                login: true,
                 menu: true
             }
         })

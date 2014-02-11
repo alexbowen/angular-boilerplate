@@ -1,1 +1,1 @@
-define(["angular","app/services/auth"],function(e){return e.module("services",["AuthService"]).value("version","0.1")});
+define(["angular","app/services/auth","app/services/version","mocks"],function(e){return e.module("services",["AuthService","VersionService","Mock","ENVIRONMENT"]).value("version","0.1")});

@@ -1,5 +1,5 @@
 {
-  "name": "angular-requirejs-seed",
+  "name": "app-deps",
   "version": "0.2.0",
   "ignore": [
     "**/.*",
@@ -9,11 +9,8 @@
     "tests"
   ],
   "devDependencies": {
-    "angular": "~1.2.1",
-    "angular-scenario": "~1.2.1",
-    "angular-route": "~1.2.1",
-    "angular-mocks": "~1.2.1",
-    "requirejs": "~2.1.9",
-    "requirejs-text": "~2.0.10"
+    "angular": "~1.2.7",
+    "angular-route": "~1.2.7",
+    "angular-mocks": "~1.2.7"
   }
 }

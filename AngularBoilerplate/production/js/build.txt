@@ -5,9 +5,28 @@ lib/bower_components/angular/angular-csp.css
 
 packages/main.js
 ----------------
+utils/cookie.js
+application/controllers/application.js
+application/controllers/route.js
+application/controllers/partial/login.js
+application/controllers/partial/menu.js
+application/controllers.js
+application/services/auth.js
+application/services/version.js
+application/services.js
+config/development.js
+application/filters.js
+application/directives.js
 packages/main.js
 
-packages/users.js
+packages/bootstrap.js
 ----------------
-application/controllers/page/users.js
-packages/users.js
+lib/bower_components/angular/angular.js
+lib/bower_components/angular-route/angular-route.js
+utils/application.js
+lib/bower_components/angular-mocks/angular-mocks.js
+mocks/http.js
+config/application.js
+application/bootstrap.js
+lib/modernizr/modernizr-dev.js
+packages/bootstrap.js

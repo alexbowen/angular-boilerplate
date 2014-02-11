@@ -4,13 +4,12 @@ function (cookie) {
 	return ['$scope', '$rootScope', 'APPLICATION', function($scope, $rootScope, APPLICATION) {
 
         for (var m in APPLICATION.modules) {
-            console.log(APPLICATION.modules, APPLICATION.modules[m]);
             if (APPLICATION.modules.hasOwnProperty(m)) {
                 $scope[m + 'active'] = APPLICATION.modules[m];
             }
         }
 
-        //cookie.remove('TA-authToken');  //TEMP
+        cookie.remove('TA-authToken');  //TEMP
         $rootScope.title = APPLICATION.name;
 
         $rootScope.$on('event:auth-loginConfirmed', function () {

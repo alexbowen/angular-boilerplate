@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        application : grunt.option('application') || grunt.file.readJSON('package.json').name,
+        app : grunt.option('app') || grunt.file.readJSON('package.json').name,
         yuidoc: {
             compile: {
                 name: '<%= pkg.name %>',
@@ -13,9 +13,9 @@ module.exports = function(grunt) {
                     "linkNatives": "true",
                     "attributesEmit": "true",
                     "paths": [
-                        "./<%= application %>/development/js/application"
+                        "./<%= app %>/development/js/application"
                     ],
-                    "outdir": "./<%= application %>/documentation"
+                    "outdir": "./<%= app %>/documentation"
                 }
             }
         },
@@ -34,13 +34,13 @@ module.exports = function(grunt) {
                     'jQuery'  : false
                 }
             },
-            beforeconcat: ['./<%= application %>/development/js/application/**/*.js']
+            beforeconcat: ['./<%= app %>/development/js/application/**/*.js']
         },
         requirejs: {
             js: {
                 options : {
-                    baseUrl: "./<%= application %>/development/js",
-                    dir: "./<%= application %>/production/js",
+                    baseUrl: "./<%= app %>/development/js",
+                    dir: "./<%= app %>/production/js",
                     preserveLicenseComments: false,
                     fileExclusionRegExp: /^(.*)\.min\.js$/,
                     urlArgs: "bust=" +  (new Date()).getTime(),
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
                         angularMocks    : 'lib/bower_components/angular-mocks/angular-mocks',
                         text            : 'lib/bower_components/requirejs-text/text',
                         modernizr       : 'lib/modernizr/modernizr-dev',
-                        env             : 'config/' + grunt.option('config'),
+                        env             : 'config/' + grunt.option('env'),
                         config          : 'config/application',
                         mocks           : 'mocks/http'
                     },
@@ -74,8 +74,8 @@ module.exports = function(grunt) {
             },
             css: {
                 options: {
-                    cssIn: "./<%= application %>/development/css/site.css",
-                    out: "./<%= application %>/production/css/site.css",
+                    cssIn: "./<%= app %>/development/css/site.css",
+                    out: "./<%= app %>/production/css/site.css",
                     optimizeCss: "default"
                 }
             }
@@ -83,20 +83,20 @@ module.exports = function(grunt) {
         karma    : {
             unit: {
                 autoWatch: false,
-                configFile: './<%= application %>/config/karma.conf.js',
+                configFile: './<%= app %>/config/karma.conf.js',
                 singleRun : true,
                 browsers  : ['Chrome']
             },
             watch: { // used in grunt watch context
                 background: true,
-                configFile: './<%= application %>/config/karma.conf.js',
+                configFile: './<%= app %>/config/karma.conf.js',
                 singleRun: false,
                 browsers  : ['Chrome']
             }
         },
         protractor: {
             options: {
-                configFile: "<%= application %>/config/protractor.conf.js",
+                configFile: "<%= app %>/config/protractor.conf.js",
                 keepAlive: true, // If false, the grunt process stops when the test fails.
                 noColor: false, // If true, protractor will not use colors in its output.
                 args: {
@@ -105,16 +105,16 @@ module.exports = function(grunt) {
             },
             your_target: {
                 options: {
-                    configFile: "<%= application %>/config/protractor.conf.js", // Target-specific config file
+                    configFile: "<%= app %>/config/protractor.conf.js", // Target-specific config file
                     args: {} // Target-specific arguments
                 }
             }
         },
         modernizr: {
 
-            "devFile" : "./<%= application %>/development/js/lib/modernizr/modernizr-dev.js",
+            "devFile" : "./<%= app %>/development/js/lib/modernizr/modernizr-dev.js",
 
-            "outputFile" : "./<%= application %>/production/js/lib/modernizr/modernizr-custom.js",
+            "outputFile" : "./<%= app %>/production/js/lib/modernizr/modernizr-custom.js",
 
             // Based on default settings on http://modernizr.com/download/
             "extra" : {

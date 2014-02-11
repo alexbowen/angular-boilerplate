@@ -1,1 +1,0 @@
-define(["angular"],function(e){return e.module("MODULES",[]).constant("MODULES",{auth:!0,menu:!0})});

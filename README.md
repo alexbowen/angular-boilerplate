@@ -14,7 +14,7 @@ Running the app locally
 
 You can run either app from a node web server runing on localhost, from the scripts folder of the app you wish to run:
 
-```node web-server.js --env [production|development (default)] ```
+```node web-server [production|development (default)] ```
 
 then the application is viewable in a browser at
 

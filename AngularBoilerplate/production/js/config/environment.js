@@ -1,0 +1,1 @@
+define(["angular"],function(e){return e.module("ENVIRONMENT",[]).constant("ENVIRONMENT",{name:"development",mock:{http:!0}})});

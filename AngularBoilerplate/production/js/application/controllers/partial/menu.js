@@ -1,1 +1,1 @@
-define(["angular"],function(e){return["$scope","$rootScope",function(e,t){e.menu=t.pages,e.$apply()}]});
+define([],function(){return["$scope","$rootScope",function(e,t){e.menu=t.pages,e.$apply()}]});

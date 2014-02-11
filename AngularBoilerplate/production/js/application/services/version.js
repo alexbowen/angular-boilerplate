@@ -1,0 +1,1 @@
+define(["angular"],function(e){return e.module("VersionService",[]).provider("VersionServiceProvider",function(){this.$get=["$rootScope","$injector",function(e,t){var n=t.get("$http");return{set:function(e){return n.post("/appversion",JSON.stringify(e))},get:function(e){return n.get("/appversion/"+e.id+"/")}}}]})});

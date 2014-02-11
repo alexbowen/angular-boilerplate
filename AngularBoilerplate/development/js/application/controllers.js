@@ -4,8 +4,6 @@ define([
     'app/controllers/application',
     'app/controllers/route',
     'app/controllers/partial/login',
-    'app/controllers/partial/get',
-    'app/controllers/partial/set',
     'app/controllers/partial/menu'
 ], function (angular) {
 	'use strict';
@@ -13,12 +11,8 @@ define([
 	return angular.module('controllers', ['APPLICATION'])
 
 	    .controller('ApplicationController', ['$scope', '$injector', function($scope, $injector) {
-			require(['app/controllers/application'], function(main) {
-				// injector method takes an array of modules as the first argument
-				// if you want your controller to be able to use components from
-				// any of your other modules, make sure you include it together with 'ng'
-				// Furthermore we need to pass on the $scope as it's unique to this controller
-				$injector.invoke(main, this, {'$scope': $scope});
+			require(['app/controllers/application'], function(application) {
+				$injector.invoke(application, this, {'$scope': $scope});
 			});
 		}])
 	    .controller('RouteController', ['$scope', '$injector', function($scope, $injector) {
@@ -35,16 +29,5 @@ define([
             require(['app/controllers/partial/menu'], function(menu) {
                 $injector.invoke(menu, this, {'$scope': $scope});
             });
-        }])
-        .controller('GetVersionController', ['$scope', '$injector', function($scope, $injector) {
-            require(['app/controllers/partial/get'], function(login) {
-                $injector.invoke(login, this, {'$scope': $scope});
-            });
-        }])
-        .controller('SetVersionController', ['$scope', '$injector', function($scope, $injector) {
-            require(['app/controllers/partial/set'], function(login) {
-                $injector.invoke(login, this, {'$scope': $scope});
-            });
-        }]
-	);
+        }]);
 });

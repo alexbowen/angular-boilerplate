@@ -1,0 +1,1 @@
+define(["angular"],function(e){return e.module("APPLICATION",[]).constant("APPLICATION",{name:"Angular Boilerplate",basePage:"home",modules:{login:!0,menu:!0}})});

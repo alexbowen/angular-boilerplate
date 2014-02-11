@@ -17,25 +17,5 @@ define(['angular', 'app/services', 'app/controllers'], function (angular, servic
 
 			}
 		};
-	})
-    .directive('getversion', function() {
-        return {
-            restrict: 'E',
-            controller: 'GetVersionController',
-            templateUrl: 'js/application/view/partial/get.tpl',
-            link: function(scope, element, attrs) {
-
-            }
-        };
-    })
-    .directive('setversion', function() {
-        return {
-            restrict: 'E',
-            controller: 'SetVersionController',
-            templateUrl: 'js/application/view/partial/set.tpl',
-            link: function(scope, element, attrs) {
-
-            }
-        };
-    });
+	});
 });

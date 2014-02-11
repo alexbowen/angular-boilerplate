@@ -1,0 +1,1 @@
+define([],function(){return{validatePassword:function(e){var t=/^(?=.*\d)(?=.*[A-Z]).{8,32}$/;return t.test(e)&&e.length>=8&&e.length<=32?!0:!1}}});

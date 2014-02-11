@@ -1,1 +1,1 @@
-define(["angular"],function(e){return["$scope","$rootScope","$routeParams",function(e,t,n){var r=n.page||"home";e.$emit("routeLoaded",{page:r}),e.page=t.pages[r],e.$apply()}]});
+define([],function(){return["$scope","$rootScope","$routeParams",function(e,t,n){var r=n.page||"home";e.$emit("routeLoaded",{page:r}),e.page=t.pages[r],e.$apply()}]});

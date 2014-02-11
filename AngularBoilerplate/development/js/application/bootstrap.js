@@ -4,8 +4,8 @@ define(['angular', 'angularRoute', 'mocks', 'config'], function (angular) {
 
     var Application =  angular.module('application', [
             'ngRoute',
-            'services',
             'controllers',
+            'services',
             'filters',
             'directives',
             'Mock',
