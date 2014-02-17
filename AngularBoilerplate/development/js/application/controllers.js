@@ -29,5 +29,10 @@ define([
             require(['app/controllers/partial/menu'], function(menu) {
                 $injector.invoke(menu, this, {'$scope': $scope});
             });
+        }])
+        .controller('FormController', ['$scope', '$injector', function($scope, $injector) {
+            require(['app/controllers/partial/form'], function(menu) {
+                $injector.invoke(menu, this, {'$scope': $scope});
+            });
         }]);
 });
