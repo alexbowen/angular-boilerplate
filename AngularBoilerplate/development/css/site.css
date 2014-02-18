@@ -156,7 +156,7 @@ li span {
     display:block;
 }
 
-form input[type='text']  {
+form input[type='text'], form input[type='password']  {
     border:1px solid #bcbcbc;
     height: 32px;
     opacity: 0.9;

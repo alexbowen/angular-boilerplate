@@ -19,6 +19,33 @@ function (angular) {
                                 pattern : /[a-zA-Z0-9]/,
                                 required : true
                             }
+                        },
+//                        {
+//                            name : "rag",
+//                            type : "select",
+//                            label : "status",
+//                            values : ['red', 'amber', 'green'],
+//                            validate : {
+//                                required : true
+//                            }
+//                        },
+                        {
+                            name : "password",
+                            type : "password",
+                            placeholder : "password",
+                            validate : {
+                                pattern : /^[a-z0-9 ,.'-]+$/i,
+                                required : true
+                            }
+                        },
+                        {
+                            name : "email",
+                            type : "text",
+                            placeholder : "email",
+                            validate : {
+                                pattern : /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                required : false
+                            }
                         }
                     ]
                 }
