@@ -1,6 +1,8 @@
 Deer Hunter Webapp
 ==================
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alexbowen/angular-boilerplate.svg)](https://greenkeeper.io/)
+
 A bare bones angular JS SPA that uses the following Javascript Dependencies:
 
 - Angular
